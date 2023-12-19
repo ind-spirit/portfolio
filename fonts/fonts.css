@@ -1,0 +1,270 @@
+@font-face {
+    font-family: 'Sohne Kraftig';
+    src: url('Sohne-Kraftig.woff2') format('woff2'),
+        url('Sohne-Kraftig.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Fett';
+    src: url('Sohne-Fett.woff2') format('woff2'),
+        url('Sohne-Fett.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Breit Extrafett';
+    src: url('SohneBreit-Extrafett.woff2') format('woff2'),
+        url('SohneBreit-Extrafett.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Leicht';
+    src: url('Sohne-Leicht.woff2') format('woff2'),
+        url('Sohne-Leicht.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Mono Halbfett';
+    src: url('SohneMono-Halbfett.woff2') format('woff2'),
+        url('SohneMono-Halbfett.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Mono Extrafett';
+    src: url('SohneMono-Extrafett.woff2') format('woff2'),
+        url('SohneMono-Extrafett.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Breit Fett';
+    src: url('SohneBreit-Fett.woff2') format('woff2'),
+        url('SohneBreit-Fett.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Breit Leicht';
+    src: url('SohneBreit-Leicht.woff2') format('woff2'),
+        url('SohneBreit-Leicht.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Mono Extraleicht';
+    src: url('SohneMono-Extraleicht.woff2') format('woff2'),
+        url('SohneMono-Extraleicht.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Breit Kraftig';
+    src: url('SohneBreit-Kraftig.woff2') format('woff2'),
+        url('SohneBreit-Kraftig.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Breit Halbfett';
+    src: url('SohneBreit-Halbfett.woff2') format('woff2'),
+        url('SohneBreit-Halbfett.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Breit Dreiviertelfett';
+    src: url('SohneBreit-Dreiviertelfett.woff2') format('woff2'),
+        url('SohneBreit-Dreiviertelfett.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Buch';
+    src: url('Sohne-Buch.woff2') format('woff2'),
+        url('Sohne-Buch.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Halbfett';
+    src: url('Sohne-Halbfett.woff2') format('woff2'),
+        url('Sohne-Halbfett.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Breit Extraleicht';
+    src: url('SohneBreit-Extraleicht.woff2') format('woff2'),
+        url('SohneBreit-Extraleicht.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Mono Kraftig';
+    src: url('SohneMono-Kraftig.woff2') format('woff2'),
+        url('SohneMono-Kraftig.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Extraleicht';
+    src: url('Sohne-Extraleicht.woff2') format('woff2'),
+        url('Sohne-Extraleicht.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Mono Buch';
+    src: url('SohneMono-Buch.woff2') format('woff2'),
+        url('SohneMono-Buch.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Mono Dreiviertelfett';
+    src: url('SohneMono-Dreiviertelfett.woff2') format('woff2'),
+        url('SohneMono-Dreiviertelfett.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Mono Fett';
+    src: url('SohneMono-Fett.woff2') format('woff2'),
+        url('SohneMono-Fett.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Breit Buch';
+    src: url('SohneBreit-Buch.woff2') format('woff2'),
+        url('SohneBreit-Buch.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Schmal Halbfett';
+    src: url('SohneSchmal-Halbfett.woff2') format('woff2'),
+        url('SohneSchmal-Halbfett.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Schmal Extraleicht';
+    src: url('SohneSchmal-Extraleicht.woff2') format('woff2'),
+        url('SohneSchmal-Extraleicht.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Schmal Fett';
+    src: url('SohneSchmal-Fett.woff2') format('woff2'),
+        url('SohneSchmal-Fett.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Schmal Extrafett';
+    src: url('SohneSchmal-Extrafett.woff2') format('woff2'),
+        url('SohneSchmal-Extrafett.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Schmal Leicht';
+    src: url('SohneSchmal-Leicht.woff2') format('woff2'),
+        url('SohneSchmal-Leicht.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Schmal Kraftig';
+    src: url('SohneSchmal-Kraftig.woff2') format('woff2'),
+        url('SohneSchmal-Kraftig.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Mono Leicht';
+    src: url('SohneMono-Leicht.woff2') format('woff2'),
+        url('SohneMono-Leicht.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Schmal Buch';
+    src: url('SohneSchmal-Buch.woff2') format('woff2'),
+        url('SohneSchmal-Buch.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne Schmal Dreiviertelfett';
+    src: url('SohneSchmal-Dreiviertelfett.woff2') format('woff2'),
+        url('SohneSchmal-Dreiviertelfett.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

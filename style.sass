@@ -1,0 +1,76 @@
+body
+    top: 0
+    width: 100%
+    background-color: #F4F4F4
+    color: black
+    font-family: 'Sohne Buch', Georgia, serif
+    font-size: 18px
+    font-style: normal
+    font-weight: 300
+    line-height: normal
+    text-transform: uppercase
+    // overflow: hidden
+
+.header
+    position: relative
+    width: 100%
+    height: 100vh
+    z-index: 2
+    background-color: #F4F4F4
+    
+
+.name
+    padding: 23vh 0 0 9vw
+
+
+.about, .contact
+    padding-left: 9vw
+    font-size: 0.9rem
+
+.about
+    padding-top: 40vh
+
+.contact
+    padding-top: 0.8rem
+
+.fixed
+    position: fixed
+    // top: 25vh
+    // left: 10vw
+    // margin: 0
+    z-index: 1
+    color: #F4F4F4
+
+.main
+    display: flex
+    flex-direction: column
+    background-color: black
+    color: #F4F4F4
+
+
+
+.images_wrapper
+    width: 54%
+    align-self: flex-end
+    padding: 25vh 8.5vw 25vh 0vw
+
+    display: flex
+    flex-direction: column
+    gap: 35vh
+    
+
+
+
+img
+    width: 100%
+    z-index: 3
+
+
+
+@media screen and (max-width: 900px)
+    .images_wrapper
+        width: 95%
+        align-self: center
+        padding-left: 0
+        padding-right: 0
+        gap: 20vh
