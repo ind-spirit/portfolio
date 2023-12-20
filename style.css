@@ -17,15 +17,19 @@ body {
   height: 100vh;
   z-index: 2;
   background-color: #F4F4F4;
+  font-size: 0.9rem;
+}
+
+.counter {
+  padding-top: 3rem;
 }
 
 .name {
   padding: 23vh 0 0 9vw;
 }
 
-.about, .contact {
+.about, .contact, .counter {
   padding-left: 9vw;
-  font-size: 0.9rem;
 }
 
 .about {
