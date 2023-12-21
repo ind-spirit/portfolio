@@ -21,12 +21,14 @@ body {
 }
 
 .counter {
-  padding-top: 3rem;
+  margin-top: 3rem;
+  line-height: 1.15rem;
 }
 
 .name {
   padding: 23vh 0 0 9vw;
   font-size: 1.1rem;
+  width: fit-content;
 }
 
 .name.fixed {
@@ -34,19 +36,30 @@ body {
 }
 
 .counter.fixed {
-  padding-top: calc( 23vh + 2.2rem + 0.15rem + 40vh + 0.9rem + 0.8rem + 0.9rem + 3rem + 0.9rem + 0.15rem + 0.9rem);
+  margin-top: calc( 23vh + 2.2rem + 0.15rem + 40vh + 0.9rem + 0.8rem + 0.9rem + 3rem + 0.9rem + 0.15rem + 0.9rem);
 }
 
 .about, .contact, .counter {
-  padding-left: 9vw;
+  margin-left: 9vw;
+  width: fit-content;
+}
+
+.about, .contact {
+  cursor: pointer;
+}
+
+.scroll {
+  text-decoration: underline;
+  text-underline-offset: 0.22rem;
+  cursor: pointer;
 }
 
 .about {
-  padding-top: 40vh;
+  margin-top: 40vh;
 }
 
 .contact {
-  padding-top: 0.8rem;
+  margin-top: 0.8rem;
 }
 
 .fixed {
