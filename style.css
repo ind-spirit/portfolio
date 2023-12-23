@@ -3,12 +3,23 @@ body {
   width: 100%;
   background-color: #F4F4F4;
   color: black;
-  font-family: "Sohne Buch", Georgia, serif;
-  font-size: 18px;
+  font-family: "Noto Sans JP", sans-serif;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 400;
   line-height: normal;
   text-transform: uppercase;
+}
+
+.hidden {
+  visibility: hidden;
+  height: 0px !important;
+}
+
+.wrappers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 64vh;
 }
 
 .header {
@@ -17,31 +28,56 @@ body {
   height: 100vh;
   z-index: 2;
   background-color: #F4F4F4;
-  font-size: 0.9rem;
+  font-size: 14.4px;
+}
+
+.header-wrapper {
+  padding: 23vh 9vw 0 9vw;
+  display: flex;
+  gap: 10%;
+  flex-direction: row;
+  height: 64vh;
+}
+
+.visible-wrapper {
+  width: 45%;
+}
+
+.hidden-wrapper {
+  width: 45%;
+}
+
+.about_name, .contacts_name {
+  font-size: 17.6px;
 }
 
 .counter_wrapper {
-  margin-top: 3rem;
-  line-height: 1.15rem;
+  line-height: 18.4px;
+}
+
+.contacts_article, .about_article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .name {
-  padding: 23vh 0 0 9vw;
-  font-size: 1.1rem;
+  font-size: 19.2px;
   width: fit-content;
+  font-family: "Sohne Buch", Georgia, serif;
 }
 
 .name.fixed {
-  font-size: 1.1rem;
-}
-
-.counter_wrapper.fixed {
-  margin-top: calc( 23vh + 2.2rem + 0.15rem + 40vh + 0.9rem + 0.8rem + 0.9rem + 3rem + 0.9rem + 0.15rem + 0.9rem);
+  font-size: 17.6px;
 }
 
 .about, .contact, .counter_wrapper {
-  margin-left: 9vw;
   width: fit-content;
+}
+
+.counter_wrapper {
+  margin-top: 48px;
 }
 
 .about, .contact {
@@ -50,7 +86,7 @@ body {
 
 .scroll {
   text-decoration: underline;
-  text-underline-offset: 0.22rem;
+  text-underline-offset: 3.52px;
   cursor: pointer;
 }
 
@@ -59,14 +95,20 @@ body {
 }
 
 .contact {
-  margin-top: 0.8rem;
+  margin-top: 12.8px;
 }
 
-.fixed {
+.fixed-wrapper {
   position: fixed;
   z-index: 1;
   color: #F4F4F4;
-  font-size: 0.9rem;
+  font-size: 14.4px;
+  padding: 23vh 9vw 0 9vw;
+  width: fit-content;
+  height: 64vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .main {
