@@ -1,5 +1,9 @@
 $fs: 16px
+$ori: 1vh
 
+.underline
+    text-decoration: underline
+    text-underline-offset: 0.22 * $fs
 
 body
     top: 0
@@ -35,15 +39,16 @@ body
     font-size: 0.9 * $fs
     
 .header-wrapper
-    padding: 23vh 9vw 0 9vw
+    padding: 19vh 9vw 0 9vw
     display: flex
     gap: 10%
     flex-direction: row
-    height: 64vh
+    
     
     
 .visible-wrapper
     width: 45%
+    justify-content: flex-end
 
 .hidden-wrapper
     // visibility: hidden
@@ -65,7 +70,8 @@ body
 .name
     font-size: 1.2 * $fs
     width: fit-content
-    font-family: 'Sohne Buch', Georgia, serif
+    margin-bottom: auto
+    // font-family: 'Sohne Buch', Georgia, serif
 
 .name.fixed
     font-size: 1.1 * $fs
@@ -77,10 +83,8 @@ body
     // margin-left: 9vw
     width: fit-content
 
-.counter_wrapper
-    margin-top: 3 * $fs
 
-.about, .contact
+#about-btn, #contact-btn
     cursor: pointer
 
 .scroll
@@ -91,11 +95,11 @@ body
 .scroll:hover
 
 
-.about
-    margin-top: 40vh
+#about-btn
+    margin-bottom: 2 * $ori
 
-.contact
-    margin-top: 0.8 * $fs
+#contact-btn
+    margin-bottom: 4 * $fs
 
 .fixed-wrapper
     position: fixed
@@ -145,3 +149,10 @@ img
         padding-left: 0
         padding-right: 0
         gap: 20vh
+
+    .wrappers
+        height: 80vh
+
+    .header-wrapper
+        padding: 10vh 2vw
+        height: fit-content

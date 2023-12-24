@@ -32,6 +32,11 @@ window.onload = () => {
     const counter2 = document.getElementsByClassName("counter")[1];
     const images = document.querySelectorAll("div.images_wrapper > img");
     let images_counter = images.length;
+    const about_btn = document.querySelector('#about-btn');
+    const contact_btn = document.querySelector('#contact-btn');
+    const hidden_wrapper = document.querySelectorAll('.hidden-wrapper')[0];
+    const about_article = document.querySelectorAll('.about_article')[0];
+    const contacts_article = document.querySelectorAll('.contacts_article')[0];
 
     top_button.addEventListener("click", () => {
         window.scrollTo({
@@ -47,70 +52,29 @@ window.onload = () => {
         });
     })
     
-    // function lazyLoading() {
-        
-        
-    //     images.forEach((el, index) => {
-    //         el.setAttribute("data-count", `${index + 1}`);
-    //         console.log(el.dataset.count);
-    //     });
-    //     console.log("ll");
-    //     const targets = document.querySelectorAll("div.images_wrapper > img");
-    //     const lazyLoad = (target) => {
-    //         console.log(target);
-    //         const io = new IntersectionObserver((entries, observer) => {
-    //             entries.forEach((entry) => {
-    //                 console.log(entry);
-    //                 if (entry.isIntersecting) {
-    //                     const img = entry.target;
-    //                     counter1.innerText = `${img.dataset.count}/${images_counter}`;
-    //                     counter2.innerText = `${img.dataset.count}/${images_counter}`;
-    //                     console.log(`${img.dataset.count}/${images_counter}`);
-    //                     console.log(counter2.innerText);
-    //                     console.log(counter2);
-    //                     //ADD TRANSITION EFFECT
-    //                     // observer.disconnect();
-    //                 }
-    //             });
-    //         });
-    //         io.observe(target);
-    //     };
-    //     targets.forEach(lazyLoad);
-    // }
+    about_btn.addEventListener('click', () => {
+      contacts_article.classList.add('hidden')
+      about_article.classList.toggle('hidden')
+      contact_btn.classList.remove('underline')
+      about_btn.classList.toggle('underline')
+    })
+
+    contact_btn.addEventListener('click', () => {
+      about_article.classList.add('hidden')
+      contacts_article.classList.toggle('hidden')
+      contact_btn.classList.toggle('underline')
+      about_btn.classList.remove('underline')
+    })
+
     images.forEach((el, index) => {
         el.setAttribute("data-count", `${index + 1}`);
-        console.log(el.dataset.count);
     });
     let data_count = document.querySelectorAll('[data-count]')
     window.onscroll = () => {
-        console.log(getMostVisibleElement(data_count));
         let img = getMostVisibleElement(data_count)
         counter1.innerText = `${img.dataset.count}/${images_counter}`;
         counter2.innerText = `${img.dataset.count}/${images_counter}`;
     }
-
-    // lazyLoading();
-    // function lazyLoading() {
-    //     const targets = document.querySelectorAll('div.images_wrapper > img');
-    //     const lazyLoad = target => {
-    //         const io = new IntersectionObserver((entries, observer) => {
-    //             entries.forEach(entry => {
-    //                 if (entry.isIntersecting) {
-    //                     const img = entry.target;
-    //                     const src = img.getAttribute('data-src');
-    //                     img.src = src;
-    //                     //ADD TRANSITION EFFECT
-    //                     setTimeout(() => {
-    //                         img.removeAttribute("data-src");
-    //                     }, 1);
-    //                     observer.disconnect();
-    //                 }
-    //             });
-    //         });
-    //         io.observe(target)
-    //     };
-    //     targets.forEach(lazyLoad);
-    // }
     function getMostVisibleElement (els) {
 
         var viewportHeight = window.innerHeight
