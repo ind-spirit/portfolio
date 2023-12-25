@@ -22,11 +22,11 @@ body
     font-weight: 400
     line-height: normal
     text-transform: uppercase
-    // overflow: hidden
 
 .hidden
     visibility: hidden
     height: 0px !important
+    width: 0px !important
 
 
 .wrappers
@@ -128,7 +128,7 @@ body
     flex-direction: column
     background-color: black
     color: #F4F4F4
-
+    width: 100vw
 
 
 .images_wrapper
@@ -151,18 +151,18 @@ img
 
 @media screen and (max-width: 900px)
     .images_wrapper
-        width: 95%
-        align-self: center
-        padding-left: 0
-        padding-right: 0
+        width: 88%
+        align-self: flex-start
+        padding: 20vh 2vw 15vh 2vw
         gap: 20vh
 
     .wrappers
-        height: 80vh
+        height: 60vh
 
     .header-wrapper
         padding: 10vh 2vw
         height: fit-content
+        width: 96vw
 
     .hidden-wrapper
         width: 0
@@ -182,3 +182,11 @@ img
     .mobile_article-wrapper > .about_article, .mobile_articles-wrapper > .contacts_article
         // padding: 10% 0
     
+    .fixed-wrapper
+        padding: 0
+        top: 10vh
+        height: 80vh
+
+    .visible-wrapper
+        width: 100%
+        height: 80vh
