@@ -5,7 +5,7 @@ window.onload = () => {
         "screen and (max-aspect-ratio: 8/11)"
     ).matches;
     if (ifMobile) {
-        document.body.style.height = `${window.innerHeight}px`;
+        // document.body.style.height = `${window.innerHeight}px`;
         document
             .querySelectorAll(".mobile_article-wrapper")[0]
             .classList.remove("hidden");
