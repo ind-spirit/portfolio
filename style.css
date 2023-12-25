@@ -158,4 +158,20 @@ img {
     padding: 10vh 2vw;
     height: fit-content;
   }
+
+  .hidden-wrapper {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+
+  .mobile_article-wrapper.hidden {
+    visibility: inherit;
+    height: 50%;
+    width: 100%;
+  }
+
+  .mobile_article-wrapper {
+    padding: 20% 0;
+  }
 }
