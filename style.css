@@ -1,3 +1,7 @@
+html {
+  height: fill-available;
+}
+
 .underline {
   text-decoration: underline;
   text-underline-offset: 3.52px;
@@ -91,10 +95,11 @@ body {
   color: #F4F4F4;
   font-size: 14.4px;
   width: fit-content;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  min-height: fill-available;
 }
 
 .name.fixed {

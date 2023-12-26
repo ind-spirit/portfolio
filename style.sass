@@ -1,6 +1,10 @@
 $fs: 16px
 $ori: 1vh
 
+
+html
+    height: fill-available
+
 .underline
     text-decoration: underline
     text-underline-offset: 0.22 * $fs
@@ -92,10 +96,11 @@ body
     color: #F4F4F4
     font-size: 0.9 * $fs
     width: fit-content
-    height: 100vh
+    min-height: 100vh
     display: flex
     flex-direction: column
     justify-content: space-around
+    min-height: fill-available
 
 .name.fixed
     font-size: 1.1 * $fs
