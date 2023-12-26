@@ -88,11 +88,12 @@ body {
 .name.fixed {
   font-size: 17.6px;
   top: 20%;
-  position: relative;
+  position: fixed;
 }
 
 .counter_wrapper.fixed {
   bottom: 16%;
+  position: fixed;
 }
 
 .about, .contact, .counter_wrapper {
