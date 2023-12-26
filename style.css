@@ -88,6 +88,7 @@ body {
 .name {
   font-size: 19.2px;
   width: fit-content;
+  margin-bottom: auto;
 }
 
 .fixed-wrapper {
@@ -103,6 +104,7 @@ body {
   justify-content: space-between;
   min-height: fill-available;
   min-height: -webkit-fill-available;
+  top: 20vh;
 }
 
 .name.fixed {
