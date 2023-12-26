@@ -41,13 +41,12 @@ body {
 }
 
 .header {
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 100vh;
   z-index: 2;
   background-color: #F4F4F4;
   font-size: 14.4px;
-  top: 0;
 }
 
 .header-wrapper {
@@ -92,28 +91,34 @@ body {
 }
 
 .fixed-wrapper {
-  position: sticky;
+  position: fixed;
   left: 10vw;
-  z-index: 5;
+  z-index: 1;
   color: #F4F4F4;
   font-size: 14.4px;
   width: fit-content;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   min-height: fill-available;
   min-height: -webkit-fill-available;
+<<<<<<< HEAD
   top: 20vh;
+=======
+  min-height: fill-available;
+>>>>>>> parent of 2d50916 (sticky)
 }
 
 .name.fixed {
   font-size: 17.6px;
-  position: relative;
+  bottom: 80%;
+  position: fixed;
 }
 
 .counter_wrapper.fixed {
-  position: relative;
+  bottom: 16%;
+  position: fixed;
 }
 
 .about, .contact, .counter_wrapper {
@@ -167,10 +172,6 @@ img {
     align-self: flex-start;
     padding: 20vh 2vw 15vh 2vw;
     gap: 20vh;
-  }
-
-  .name {
-    margin-bottom: auto;
   }
 
   .wrappers {

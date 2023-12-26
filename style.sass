@@ -42,13 +42,12 @@ body
     height: 64vh
 
 .header
-    position: absolute
+    position: relative
     width: 100%
     height: 100vh
     z-index: 2
     background-color: #F4F4F4
     font-size: 0.9 * $fs
-    top: 0
     
 .header-wrapper
     padding: 20vh 10% 0 10%
@@ -91,30 +90,35 @@ body
     // font-family: 'Sohne Buch', Georgia, serif
 
 .fixed-wrapper
-    position: sticky
+    position: fixed
     // top: 25vh
     left: 10vw
     // margin: 0
-    z-index: 5
+    z-index: 1
     color: #F4F4F4
     font-size: 0.9 * $fs
     width: fit-content
     min-height: 100vh
     display: flex
     flex-direction: column
-    justify-content: space-between
+    justify-content: space-around
     min-height: fill-available
     min-height: -webkit-fill-available
+<<<<<<< HEAD
     top: 20vh
+=======
+    min-height: fill-available
+>>>>>>> parent of 2d50916 (sticky)
 
 .name.fixed
     font-size: 1.1 * $fs
-    position: relative
+    bottom: 80%
+    position: fixed
 
 
 .counter_wrapper.fixed
-    // bottom: 16%
-    position: relative
+    bottom: 16%
+    position: fixed
 
 .about, .contact, .counter_wrapper
     // margin-left: 9vw
@@ -177,9 +181,6 @@ img
         padding: 20vh 2vw 15vh 2vw
         gap: 20vh
 
-    .name 
-        margin-bottom: auto
-
     .wrappers
         height: 60vh
 
@@ -215,4 +216,3 @@ img
     .visible-wrapper
         width: 100%
         height: 80vh
-
