@@ -104,12 +104,12 @@ body {
 
 .name.fixed {
   font-size: 17.6px;
-  margin-top: 10dvh;
+  margin-top: 10vh;
   margin-bottom: 0;
 }
 
 .counter_wrapper.fixed {
-  margin-bottom: 10dvh;
+  margin-bottom: 10vh;
 }
 
 .about, .contact, .counter_wrapper {
@@ -194,7 +194,7 @@ img {
 
   .fixed-wrapper {
     padding: 0;
-    height: 100dvh;
+    height: 100vh;
     left: 2vw;
   }
 
