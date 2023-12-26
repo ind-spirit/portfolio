@@ -82,7 +82,6 @@ body {
 .name {
   font-size: 19.2px;
   width: fit-content;
-  margin-bottom: auto;
 }
 
 .name.fixed {
