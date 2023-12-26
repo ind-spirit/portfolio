@@ -6,17 +6,17 @@ window.onload = () => {
     document.body.style.width = `${document.documentElement.clientWidth}px`;
     console.log(document.body.style.width, window.innerWidth);
 
-    ["resize", "scroll", "touchstart", "touchmove"].forEach(function (e) {
-        window.addEventListener(e, () => {
-            let vh = document.documentElement.clientHeight;
-            // document.documentElement.style.setProperty("--vh", `${vh}px`);
-            let fix = document.querySelectorAll(".fix");
-            fix.forEach((el) => {
-                el.style.height = `${vh}px`;
-                console.log(vh, el.style.height);
-            });
-        });
-    });
+    // ["resize", "scroll", "touchstart", "touchmove"].forEach(function (e) {
+    //     window.addEventListener(e, () => {
+    //         let vh = document.documentElement.clientHeight;
+    //         // document.documentElement.style.setProperty("--vh", `${vh}px`);
+    //         let fix = document.querySelectorAll(".fix");
+    //         fix.forEach((el) => {
+    //             el.style.height = `${vh}px`;
+    //             console.log(vh, el.style.height);
+    //         });
+    //     });
+    // });
 
     // window.addEventListener("resize", () => {
     //     // We execute the same script as before
