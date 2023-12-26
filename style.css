@@ -93,24 +93,23 @@ body {
 .fixed-wrapper {
   position: fixed;
   left: 10vw;
-  z-index: 1;
+  z-index: 5;
   color: #F4F4F4;
   font-size: 14.4px;
   width: fit-content;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  top: 20vh;
+  justify-content: space-between;
 }
 
 .name.fixed {
   font-size: 17.6px;
-  bottom: 80%;
+  margin-top: 10dvh;
+  margin-bottom: 0;
 }
 
 .counter_wrapper.fixed {
-  bottom: 16%;
+  margin-bottom: 10dvh;
 }
 
 .about, .contact, .counter_wrapper {
@@ -195,8 +194,7 @@ img {
 
   .fixed-wrapper {
     padding: 0;
-    top: 10vh;
-    height: 80vh;
+    height: 100dvh;
     left: 2vw;
   }
 
