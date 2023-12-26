@@ -11,7 +11,7 @@ a {
 
 body {
   top: 0;
-  width: 100%;
+  width: 100vw;
   background-color: #F4F4F4;
   color: black;
   font-family: "Noto Sans JP", sans-serif;
@@ -182,6 +182,7 @@ img {
     padding: 0;
     top: 10vh;
     height: 80vh;
+    left: 2vw;
   }
 
   .visible-wrapper {

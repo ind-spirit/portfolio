@@ -1,18 +1,29 @@
 window.onload = () => {
-  let about_article = document.querySelectorAll(".about_article")[1];
-  let contacts_article = document.querySelectorAll(".contacts_article")[1];
+    window.addEventListener("resize", () => {
+        // We execute the same script as before
+        let vh = window.innerHeight * 0.01;
+        // document.documentElement.style.setProperty("--vh", `${vh}px`);
+        let fix = document.querySelectorAll('.fix');
+        fix.forEach((el) => {
+            el.style.height = `${vh * 80}px`
+            console.log(vh, el.style.height );
+        })
+        console.log(vh, document.documentElement.style.getPropertyValue("--vh"));
+    });
+
+    let about_article = document.querySelectorAll(".about_article")[1];
+    let contacts_article = document.querySelectorAll(".contacts_article")[1];
     const ifMobile = window.matchMedia(
         "screen and (max-aspect-ratio: 8/11)"
     ).matches;
     if (ifMobile) {
-        document.querySelectorAll('.hidden-wrapper')[0].remove();
+        document.querySelectorAll(".hidden-wrapper")[0].remove();
         // document.body.style.height = `${window.innerHeight}px`;
         document
             .querySelectorAll(".mobile_article-wrapper")[0]
             .classList.remove("hidden");
         about_article = document.querySelectorAll(".about_article")[0];
-        contacts_article =
-            document.querySelectorAll(".contacts_article")[0];
+        contacts_article = document.querySelectorAll(".contacts_article")[0];
     }
     // const ifMobile = window.matchMedia('screen and (max-aspect-ratio: 8/11)').matches;
     // if (ifMobile) {
