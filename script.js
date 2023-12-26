@@ -1,14 +1,17 @@
 window.onload = () => {
+    console.log(document.body.style.width, document.documentElement.clientWidth);
+    document.body.style.width = `${document.documentElement.clientWidth}px`
+    console.log(document.body.style.width, window.innerWidth);
+
     window.addEventListener("resize", () => {
         // We execute the same script as before
-        let vh = window.innerHeight * 0.01;
+        let vh = document.documentElement.clientHeight * 0.01;
         // document.documentElement.style.setProperty("--vh", `${vh}px`);
         let fix = document.querySelectorAll('.fix');
         fix.forEach((el) => {
             el.style.height = `${vh * 80}px`
             console.log(vh, el.style.height );
         })
-        console.log(vh, document.documentElement.style.getPropertyValue("--vh"));
     });
 
     let about_article = document.querySelectorAll(".about_article")[1];

@@ -13,6 +13,7 @@ a
 body
     top: 0
     width: 100vw
+    max-width: 100%
     background-color: #F4F4F4
     color: black
     // font-family: 'Sohne Buch', Georgia, serif
@@ -44,10 +45,12 @@ body
     font-size: 0.9 * $fs
     
 .header-wrapper
-    padding: 19vh 9vw 0 9vw
+    padding: 19vh 10% 0 9%
     display: flex
     gap: 10%
     flex-direction: row
+    width: 80%
+    
     
     
     
@@ -58,6 +61,7 @@ body
 .hidden-wrapper
     // visibility: hidden
     width: 45%
+    flex-shrink: 0.1
 
 .about_name, .contacts_name
     font-size: $fs * 1.1
@@ -128,7 +132,7 @@ body
     flex-direction: column
     background-color: black
     color: #F4F4F4
-    width: 100vw
+    width: 100%
 
 
 .images_wrapper
