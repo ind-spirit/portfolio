@@ -1,5 +1,6 @@
 html {
   height: fill-available;
+  height: -webkit-fill-available;
 }
 
 .underline {
@@ -100,17 +101,19 @@ body {
   flex-direction: column;
   justify-content: space-around;
   min-height: fill-available;
+  min-height: -webkit-fill-available;
+  min-height: fill-available;
 }
 
 .name.fixed {
   font-size: 17.6px;
   bottom: 80%;
-  position: absolute;
+  position: fixed;
 }
 
 .counter_wrapper.fixed {
   bottom: 16%;
-  position: absolute;
+  position: fixed;
 }
 
 .about, .contact, .counter_wrapper {
