@@ -107,10 +107,12 @@ body {
   font-size: 17.6px;
   margin-top: 10vh;
   margin-bottom: 0;
+  transform: translateZ(0);
 }
 
 .counter_wrapper.fixed {
   margin-bottom: 10vh;
+  transform: translateZ(0);
 }
 
 .about, .contact, .counter_wrapper {
