@@ -84,15 +84,28 @@ body {
   width: fit-content;
 }
 
+.fixed-wrapper {
+  position: fixed;
+  left: 10vw;
+  z-index: 1;
+  color: #F4F4F4;
+  font-size: 14.4px;
+  width: fit-content;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 .name.fixed {
   font-size: 17.6px;
   bottom: 80%;
-  position: fixed;
+  position: absolute;
 }
 
 .counter_wrapper.fixed {
   bottom: 16%;
-  position: fixed;
+  position: absolute;
 }
 
 .about, .contact, .counter_wrapper {
@@ -116,19 +129,6 @@ body {
 
 #contact-btn {
   margin-bottom: 64px;
-}
-
-.fixed-wrapper {
-  position: fixed;
-  left: 10vw;
-  z-index: 1;
-  color: #F4F4F4;
-  font-size: 14.4px;
-  width: fit-content;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
 }
 
 .main {

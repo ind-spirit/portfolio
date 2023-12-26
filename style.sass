@@ -83,14 +83,28 @@ body
     width: fit-content
     // font-family: 'Sohne Buch', Georgia, serif
 
+.fixed-wrapper
+    position: fixed
+    // top: 25vh
+    left: 10vw
+    // margin: 0
+    z-index: 1
+    color: #F4F4F4
+    font-size: 0.9 * $fs
+    width: fit-content
+    height: 100vh
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+
 .name.fixed
     font-size: 1.1 * $fs
     bottom: 80%
-    position: fixed
+    position: absolute
 
 .counter_wrapper.fixed
     bottom: 16%
-    position: fixed
+    position: absolute
 
 .about, .contact, .counter_wrapper
     // margin-left: 9vw
@@ -115,19 +129,7 @@ body
 #contact-btn
     margin-bottom: 4 * $fs
 
-.fixed-wrapper
-    position: fixed
-    // top: 25vh
-    left: 10vw
-    // margin: 0
-    z-index: 1
-    color: #F4F4F4
-    font-size: 0.9 * $fs
-    width: fit-content
-    height: 100vh
-    display: flex
-    flex-direction: column
-    justify-content: space-around
+
 
 .main
     display: flex
