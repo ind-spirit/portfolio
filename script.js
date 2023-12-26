@@ -5,11 +5,11 @@ window.onload = () => {
 
     window.addEventListener("resize", () => {
         // We execute the same script as before
-        let vh = document.documentElement.clientHeight * 0.01;
+        let vh = document.documentElement.clientHeight;
         // document.documentElement.style.setProperty("--vh", `${vh}px`);
         let fix = document.querySelectorAll('.fix');
         fix.forEach((el) => {
-            el.style.height = `${vh * 80}px`
+            el.style.height = `${vh}px`
             console.log(vh, el.style.height );
         })
     });

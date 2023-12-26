@@ -45,7 +45,7 @@ body
     font-size: 0.9 * $fs
     
 .header-wrapper
-    padding: 19vh 10% 0 9%
+    padding: 20vh 10% 0 10%
     display: flex
     gap: 10%
     flex-direction: row
@@ -86,12 +86,15 @@ body
 
 .name.fixed
     font-size: 1.1 * $fs
+    top: 20%
+    position: relative
 
 .counter_wrapper.fixed
-    // margin-top: calc( 82vh )
+    bottom: 16%
 
 .about, .contact, .counter_wrapper
     // margin-left: 9vw
+    position: relative
     width: fit-content
 
 
@@ -115,17 +118,16 @@ body
 .fixed-wrapper
     position: fixed
     // top: 25vh
-    // left: 10vw
+    left: 10vw
     // margin: 0
     z-index: 1
     color: #F4F4F4
     font-size: 0.9 * $fs
-    padding: 23vh 9vw 0 9vw
     width: fit-content
-    height: 64vh
+    height: 100vh
     display: flex
     flex-direction: column
-    justify-content: space-between
+    justify-content: space-around
 
 .main
     display: flex
