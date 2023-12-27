@@ -62,7 +62,7 @@ window.onload = () => {
 
     [("resize", "scroll", "touchstart", "touchmove")].forEach(function (e) {
         window.addEventListener(e, () => {
-            fixed_wrapper.style.height = window.visualViewport.height
+            fixed_wrapper.style.height = `${window.visualViewport.height}px`
             // x.a = `${window.innerHeight}px`
             // x.a = `${document.documentElement.clientHeight}px`
             // let vh = window.innerHeight;
