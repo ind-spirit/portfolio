@@ -60,10 +60,10 @@ window.onload = () => {
             } - ${window.visualViewport.height})`
         );
         document.querySelectorAll(".name.fixed")[0].style.marginTop = `${
-            window.screen.availHeight * 0.1 +
+            window.screen.availHeight * 0.1 -
             (window.screen.availHeight - window.visualViewport.height)
         }px`;
-    }, 500);
+    });
 
     // setInterval(function () {
     //     // x.a = `${window.innerHeight}px`;
