@@ -46,13 +46,14 @@ window.onload = () => {
 
     x.a = 0;
     x.a = vh;
-
+    let i = 0
     setInterval(function () {
         // x.a = `${window.innerHeight}px`;
         // x.a = `${document.documentElement.clientHeight}px`
         // console.log(x.a);
-        counter1.innerText = window.innerHeight;
-        counter2.innerText = window.innerHeight;
+        i++
+        counter1.innerText = i;
+        counter2.innerText = i;
         fixed_wrapper.style.height = `${window.innerHeight}px`
     }, 50);
 
