@@ -47,10 +47,10 @@ window.onload = () => {
     x.a = 0;
     x.a = vh;
 
-    // setInterval(function () {
-    //     x.a = 10;
-    //     console.log(x);
-    // }, 2000);
+    setInterval(function () {
+        x.a = vh;
+        console.log(x);
+    }, 50);
 
     [("resize", "scroll", "touchstart", "touchmove")].forEach(function (e) {
         window.addEventListener(e, () => {
