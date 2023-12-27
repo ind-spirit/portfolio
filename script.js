@@ -47,12 +47,12 @@ window.onload = () => {
     });
 
     setInterval(function () {
-        counter1.innerText = `${document.documentElement.offsetHeight * 0.1} - (${document.documentElement.offsetHeight} - ${window.visualViewport.height})`
-        counter2.innerText = `${document.documentElement.offsetHeight * 0.1} - (${document.documentElement.offsetHeight} - ${window.visualViewport.height})`
+        counter1.innerText = `${window.outerHeight * 0.1} - (${window.outerHeight} - ${window.visualViewport.height})`
+        counter2.innerText = `${window.outerHeight * 0.1} - (${window.outerHeight} - ${window.visualViewport.height})`
         fixed_wrapper.style.height = `${window.visualViewport.height}px`
-        console.log(`${document.documentElement.offsetHeight * 0.1} - (${document.documentElement.offsetHeight} - ${window.visualViewport.height})`);
+        console.log(`${window.outerHeight * 0.1} - (${window.outerHeight} - ${window.visualViewport.height})`);
         document.querySelectorAll('.name.fixed')[0].style.marginTop = 
-            `${document.documentElement.offsetHeight * 0.1 - (document.documentElement.offsetHeight - window.visualViewport.height) }px`
+            `${window.outerHeight * 0.1 - (window.outerHeight - window.visualViewport.height) }px`
     }, 500);
 
     // setInterval(function () {
