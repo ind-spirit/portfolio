@@ -1,4 +1,19 @@
 window.onload = () => {
+    x = {
+        aInternal: 10,
+        aListener: function (val) {},
+        set a(val) {
+            this.aInternal = val;
+            this.aListener(val);
+        },
+        get a() {
+            return this.aInternal;
+        },
+        registerListener: function (listener) {
+            this.aListener = listener;
+        },
+    };
+
     console.log(
         document.body.style.width,
         document.documentElement.clientWidth
@@ -6,16 +21,26 @@ window.onload = () => {
     document.body.style.width = `${document.documentElement.clientWidth}px`;
     console.log(document.body.style.width, window.innerWidth);
 
-    ["resize", "scroll", "touchstart", "touchmove"].forEach(function (e) {
+    let vh = window.innerHeight;
+
+    x.registerListener(function (val) {
+        counter1.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`;
+        counter2.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`;
+    });
+
+    x = window.innerHeight;
+
+    [("resize", "scroll", "touchstart", "touchmove")].forEach(function (e) {
         window.addEventListener(e, () => {
-            let vh = document.documentElement.clientHeight;
+            let vh = window.innerHeight;
             // document.documentElement.style.setProperty("--vh", `${vh}px`);
             let fix = document.querySelectorAll(".fix");
             fix.forEach((el) => {
                 el.style.height = `${vh}px`;
                 console.log(vh, el.style.height);
-                counter1.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`
-                counter2.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`
+                x = `${vh}px`
+                // counter1.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`;
+                // counter2.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`;
             });
         });
     });
