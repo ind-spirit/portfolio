@@ -54,16 +54,18 @@ window.onload = () => {
 
     [("resize", "scroll", "touchstart", "touchmove")].forEach(function (e) {
         window.addEventListener(e, () => {
-            let vh = window.innerHeight;
+            x.a = `${window.innerHeight}px`
+            // let vh = window.innerHeight;
             // document.documentElement.style.setProperty("--vh", `${vh}px`);
-            let fix = document.querySelectorAll(".fix");
-            fix.forEach((el) => {
-                el.style.height = `${window.innerHeight}px`;
-                console.log(vh, el.style.height);
-                x.a = `${window.innerHeight}px`;
-                // counter1.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`;
-                // counter2.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`;
-            });
+            // let fix = document.querySelectorAll(".fix")[0];
+            // fix
+            // fix.forEach((el) => {
+            //     el.style.height = `${window.innerHeight}px`;
+            //     console.log(vh, el.style.height);
+            //     x.a = `${window.innerHeight}px`;
+            //     // counter1.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`;
+            //     // counter2.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`;
+            // });
         });
     });
 
