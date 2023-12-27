@@ -49,14 +49,14 @@ window.onload = () => {
 
     setInterval(function () {
         // x.a = `${window.innerHeight}px`;
-        x.a = `${document.documentElement.clientHeight}`
-        console.log(x);
+        x.a = `${document.documentElement.clientHeight}px`
+        console.log(x.a);
     }, 50);
 
     [("resize", "scroll", "touchstart", "touchmove")].forEach(function (e) {
         window.addEventListener(e, () => {
             // x.a = `${window.innerHeight}px`
-            x.a = `${document.documentElement.clientHeight}`
+            x.a = `${document.documentElement.clientHeight}px`
             // let vh = window.innerHeight;
             // document.documentElement.style.setProperty("--vh", `${vh}px`);
             // let fix = document.querySelectorAll(".fix")[0];
