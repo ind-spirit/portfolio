@@ -47,10 +47,10 @@ window.onload = () => {
     x.a = 0;
     x.a = vh;
 
-    setInterval(function () {
-        x.a = `${vh}px`;
-        console.log(x);
-    }, 50);
+    // setInterval(function () {
+    //     x.a = `${window.innerHeight}px`;
+    //     console.log(x);
+    // }, 50);
 
     [("resize", "scroll", "touchstart", "touchmove")].forEach(function (e) {
         window.addEventListener(e, () => {
@@ -58,7 +58,7 @@ window.onload = () => {
             // document.documentElement.style.setProperty("--vh", `${vh}px`);
             let fix = document.querySelectorAll(".fix");
             fix.forEach((el) => {
-                el.style.height = `${vh}px`;
+                el.style.height = `${window.innerHeight}px`;
                 console.log(vh, el.style.height);
                 x.a = `${vh}px`;
                 // counter1.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`;
