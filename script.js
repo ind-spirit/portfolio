@@ -47,20 +47,23 @@ window.onload = () => {
     });
 
     setInterval(function () {
-        // counter1.innerText = `${window.screen.availHeight * 0.1} - (${
-        //     window.screen.availHeight
-        // } - ${window.visualViewport.height})`;
-        // counter2.innerText = `${window.screen.availHeight * 0.1} - (${
-        //     window.screen.availHeight
-        // } - ${window.visualViewport.height})`;
-        // fixed_wrapper.style.height = `${window.visualViewport.height}px`;
-        // console.log(
-        //     `${window.screen.availHeight * 0.1} - (${
-        //         window.screen.availHeight
-        //     } - ${window.visualViewport.height})`
-        // );
-        document.querySelectorAll(".name.fixed")[0].style.marginTop = `${window.screen.availHeight * 0.1}px`;
-    });
+        counter1.innerText = `${window.screen.availHeight * 0.1} - (${
+            window.screen.availHeight
+        } - ${window.visualViewport.height})`;
+        counter2.innerText = `${window.screen.availHeight * 0.1} - (${
+            window.screen.availHeight
+        } - ${window.visualViewport.height})`;
+        fixed_wrapper.style.height = `${window.visualViewport.height}px`;
+        console.log(
+            `${window.screen.availHeight * 0.1} - (${
+                window.screen.availHeight
+            } - ${window.visualViewport.height})`
+        );
+        document.querySelectorAll(".name.fixed")[0].style.marginTop = `${
+            window.screen.availHeight * 0.1 -
+            (window.screen.availHeight - window.visualViewport.height)
+        }px`;
+    }, 500);
 
     // setInterval(function () {
     //     // x.a = `${window.innerHeight}px`;
