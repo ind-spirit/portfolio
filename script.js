@@ -47,12 +47,13 @@ window.onload = () => {
     });
 
     setInterval(function () {
-        counter1.innerText = 8
-        counter2.innerText = 8
+        counter1.innerText = `${window.screen.height * 0.1} - (${window.screen.height} - ${window.visualViewport.height})`
+        counter2.innerText = `${window.screen.height * 0.1} - (${window.screen.height} - ${window.visualViewport.height})`
         fixed_wrapper.style.height = `${window.visualViewport.height}px`
+        console.log(`${window.screen.height * 0.1} - (${window.screen.height} - ${window.visualViewport.height})`);
         document.querySelectorAll('.name.fixed')[0].style.marginTop = 
             `${window.screen.height * 0.1 - (window.screen.height - window.visualViewport.height) }px`
-    }, 0);
+    }, 500);
 
     // setInterval(function () {
     //     // x.a = `${window.innerHeight}px`;
