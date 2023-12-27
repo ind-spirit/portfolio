@@ -47,10 +47,11 @@ window.onload = () => {
     });
 
     setInterval(function () {
-        counter1.innerText = 5
-        counter2.innerText = 5
+        counter1.innerText = 7
+        counter2.innerText = 7
         fixed_wrapper.style.height = `${window.visualViewport.height}px`
-        document.querySelectorAll('.name.fixed')[0].style.marginTop = `${window.visualViewport.height * 0.1}px`
+        document.querySelectorAll('.name.fixed')[0].style.marginTop = 
+            `${window.visualViewport.height * 0.1 - (window.offsetHeight - window.visualViewport.height) }px`
     }, 0);
 
     // setInterval(function () {
