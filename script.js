@@ -60,7 +60,7 @@ window.onload = () => {
             fix.forEach((el) => {
                 el.style.height = `${window.innerHeight}px`;
                 console.log(vh, el.style.height);
-                x.a = `${vh}px`;
+                x.a = `${window.innerHeight}px`;
                 // counter1.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`;
                 // counter2.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`;
             });
