@@ -47,11 +47,11 @@ window.onload = () => {
     });
 
     setInterval(function () {
-        counter1.innerText = 7
-        counter2.innerText = 7
+        counter1.innerText = 8
+        counter2.innerText = 8
         fixed_wrapper.style.height = `${window.visualViewport.height}px`
         document.querySelectorAll('.name.fixed')[0].style.marginTop = 
-            `${window.visualViewport.height * 0.1 - (window.offsetHeight - window.visualViewport.height) }px`
+            `${window.visualViewport.height * 0.1 - (window.screen.height - window.visualViewport.height) }px`
     }, 0);
 
     // setInterval(function () {
