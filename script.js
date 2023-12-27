@@ -54,10 +54,11 @@ window.onload = () => {
         // x.a = `${document.documentElement.clientHeight}px`
         // console.log(x.a);
         i++
-        counter1.innerText = `${fixed_wrapper.style.height}`;
-        counter2.innerText = `${fixed_wrapper.style.height}`;
+        counter1.innerText = document.documentElement.getBoundingClientRect().height;
+        counter2.innerText = document.documentElement.getBoundingClientRect().height;
+        console.log(document.documentElement.getBoundingClientRect().height);
         fixed_wrapper.style.height = `${window.innerHeight}px`
-    }, 50);
+    }, 5000);
 
     // [("resize", "scroll", "touchstart", "touchmove")].forEach(function (e) {
     //     window.addEventListener(e, () => {
