@@ -14,8 +14,8 @@ window.onload = () => {
             fix.forEach((el) => {
                 el.style.height = `${vh}px`;
                 console.log(vh, el.style.height);
-                counter1.innerText = `${vh}  ${el.style.height} ${window.innerWidth}`
-                counter2.innerText = `${vh}  ${el.style.height} ${window.innerWidth}`
+                counter1.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`
+                counter2.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`
             });
         });
     });
