@@ -49,16 +49,20 @@ window.onload = () => {
     x.a = 0;
     x.a = vh;
     // let i = 0
-    setInterval(function () {
-        // x.a = `${window.innerHeight}px`;
-        // x.a = `${document.documentElement.clientHeight}px`
-        // console.log(x.a);
-        counter1.innerText = 5
-        counter2.innerText = 5
-        // console.log(window.visualViewport.height);
+    // setInterval(function () {
+    //     // x.a = `${window.innerHeight}px`;
+    //     // x.a = `${document.documentElement.clientHeight}px`
+    //     // console.log(x.a);
+    //     counter1.innerText = 5
+    //     counter2.innerText = 5
+    //     // console.log(window.visualViewport.height);
+    //     fixed_wrapper.style.height = `${window.visualViewport.height}px`
+    // }, 0);
+    setTimeout(function() {
+        counter1.innerText = 6
+        counter2.innerText = 6
         fixed_wrapper.style.height = `${window.visualViewport.height}px`
     }, 0);
-
     // [("resize", "scroll", "touchstart", "touchmove")].forEach(function (e) {
     //     window.addEventListener(e, () => {
     //         fixed_wrapper.style.height = `${window.visualViewport.height}px`
