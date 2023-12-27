@@ -1,7 +1,6 @@
 $fs: 16px
 $ori: 1vh
 
-
 html
     height: fill-available
     height: -webkit-fill-available
@@ -34,7 +33,6 @@ body
     height: 0px !important
     width: 0px !important
 
-
 .wrappers
     display: flex
     flex-direction: column
@@ -48,17 +46,14 @@ body
     z-index: 2
     background-color: #F4F4F4
     font-size: 0.9 * $fs
-    
+
 .header-wrapper
     padding: 20vh 10% 0 10%
     display: flex
     gap: 10%
     flex-direction: row
     width: 80%
-    
-    
-    
-    
+
 .visible-wrapper
     width: 45%
     justify-content: flex-end
@@ -74,7 +69,6 @@ body
 
 .counter_wrapper
     line-height: 1.15 * $fs
-
 
 .contacts_article, .about_article
     display: flex
@@ -101,7 +95,14 @@ body
     display: flex
     flex-direction: column
     justify-content: space-between
-    transform: translateZ(0)
+    transform: translate(0%, 0%)
+    position: fixed
+    display: block
+    top: 0
+    left: 0
+    height: 100vh
+    width: 100vw
+    // transform: translateZ(0)
     // min-height: fill-available
     // min-height: -webkit-fill-available
     // top: 20dvh
@@ -113,7 +114,6 @@ body
     transform: translateZ(0)
     // position: fixed
 
-
 .counter_wrapper.fixed
     margin-bottom: 10vh
     transform: translateZ(0)
@@ -123,7 +123,6 @@ body
     // margin-left: 9vw
     position: relative
     width: fit-content
-
 
 #about-btn, #contact-btn
     cursor: pointer
@@ -135,14 +134,11 @@ body
 
 .scroll:hover
 
-
 #about-btn
     margin-bottom: 2 * $ori
 
 #contact-btn
     margin-bottom: 4 * $fs
-
-
 
 .main
     display: flex
@@ -150,7 +146,6 @@ body
     background-color: black
     color: #F4F4F4
     width: 100%
-
 
 .images_wrapper
     width: 54%
@@ -160,18 +155,10 @@ body
     display: flex
     flex-direction: column
     gap: 35vh
-    
-
-
 
 img
     width: 100%
     z-index: 3
-
-
-
-
-
 
 @media screen and (max-width: 900px)
     .images_wrapper
@@ -205,7 +192,7 @@ img
 
     .mobile_article-wrapper > .about_article, .mobile_articles-wrapper > .contacts_article
         // padding: 10% 0
-    
+
     .fixed-wrapper
         padding: 0
         height: 100vh
