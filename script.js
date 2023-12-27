@@ -60,7 +60,7 @@ window.onload = () => {
             } - ${window.visualViewport.height})`
         );
         document.querySelectorAll(".name.fixed")[0].style.marginTop = `${
-            window.screen.availHeight * 0.1 -
+            window.screen.availHeight * 0.3 -
             (window.screen.availHeight - window.visualViewport.height)
         }px`;
     });
