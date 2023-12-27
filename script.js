@@ -6,17 +6,19 @@ window.onload = () => {
     document.body.style.width = `${document.documentElement.clientWidth}px`;
     console.log(document.body.style.width, window.innerWidth);
 
-    // ["resize", "scroll", "touchstart", "touchmove"].forEach(function (e) {
-    //     window.addEventListener(e, () => {
-    //         let vh = document.documentElement.clientHeight;
-    //         // document.documentElement.style.setProperty("--vh", `${vh}px`);
-    //         let fix = document.querySelectorAll(".fix");
-    //         fix.forEach((el) => {
-    //             el.style.height = `${vh}px`;
-    //             console.log(vh, el.style.height);
-    //         });
-    //     });
-    // });
+    ["resize", "scroll", "touchstart", "touchmove"].forEach(function (e) {
+        window.addEventListener(e, () => {
+            let vh = document.documentElement.clientHeight;
+            // document.documentElement.style.setProperty("--vh", `${vh}px`);
+            let fix = document.querySelectorAll(".fix");
+            fix.forEach((el) => {
+                el.style.height = `${vh}px`;
+                console.log(vh, el.style.height);
+                counter1.innerText = `${vh}  ${el.style.height}`
+                counter2.innerText = `${vh}  ${el.style.height}`
+            });
+        });
+    });
 
     // window.addEventListener("resize", () => {
     //     // We execute the same script as before
@@ -112,11 +114,11 @@ window.onload = () => {
         el.setAttribute("data-count", `${index + 1}`);
     });
     let data_count = document.querySelectorAll("[data-count]");
-    window.onscroll = () => {
-        let img = getMostVisibleElement(data_count);
-        counter1.innerText = `${img.dataset.count}/${images_counter}`;
-        counter2.innerText = `${img.dataset.count}/${images_counter}`;
-    };
+    // window.onscroll = () => {
+    //     let img = getMostVisibleElement(data_count);
+    //     counter1.innerText = `${img.dataset.count}/${images_counter}`;
+    //     counter2.innerText = `${img.dataset.count}/${images_counter}`;
+    // };
     function getMostVisibleElement(els) {
         var viewportHeight = window.innerHeight;
 
