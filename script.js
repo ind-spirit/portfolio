@@ -56,9 +56,9 @@ window.onload = () => {
         i++
         counter1.innerText = document.documentElement.getBoundingClientRect().height;
         counter2.innerText = document.documentElement.getBoundingClientRect().height;
-        console.log(document.documentElement.getBoundingClientRect().height);
+        console.log(window.visualViewport.height);
         fixed_wrapper.style.height = `${window.innerHeight}px`
-    }, 50);
+    }, 500);
 
     // [("resize", "scroll", "touchstart", "touchmove")].forEach(function (e) {
     //     window.addEventListener(e, () => {
