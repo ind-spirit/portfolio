@@ -48,7 +48,7 @@ window.onload = () => {
     x.a = vh;
 
     setInterval(function () {
-        x.a = vh;
+        x.a = `${vh}px`;
         console.log(x);
     }, 50);
 
