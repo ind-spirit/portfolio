@@ -53,11 +53,11 @@ window.onload = () => {
         // x.a = `${window.innerHeight}px`;
         // x.a = `${document.documentElement.clientHeight}px`
         // console.log(x.a);
-        counter1.innerText = 4
-        counter2.innerText = 4
+        counter1.innerText = 5
+        counter2.innerText = 5
         // console.log(window.visualViewport.height);
         fixed_wrapper.style.height = `${window.visualViewport.height}px`
-    }, 1);
+    }, 0);
 
     // [("resize", "scroll", "touchstart", "touchmove")].forEach(function (e) {
     //     window.addEventListener(e, () => {
