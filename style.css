@@ -92,7 +92,7 @@ body {
 
 .fixed-wrapper {
   position: fixed;
-  height: 100vh;
+  height: 100dvh;
   left: 10vw;
   z-index: 5;
   color: #F4F4F4;

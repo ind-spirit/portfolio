@@ -1,4 +1,6 @@
 window.onload = () => {
+    const c = CSS.dvh
+    console.log(c);
     let header = document.getElementsByClassName("header")[0];
     let top_button = document.getElementsByClassName("top")[0];
     let down_button = document.getElementsByClassName("down")[0];
@@ -52,8 +54,8 @@ window.onload = () => {
         // x.a = `${document.documentElement.clientHeight}px`
         // console.log(x.a);
         i++
-        counter1.innerText = i;
-        counter2.innerText = i;
+        counter1.innerText = `${fixed_wrapper.style.height}`;
+        counter2.innerText = `${fixed_wrapper.style.height}`;
         fixed_wrapper.style.height = `${window.innerHeight}px`
     }, 50);
 
