@@ -58,7 +58,7 @@ window.onload = () => {
         counter2.innerText = document.documentElement.getBoundingClientRect().height;
         console.log(document.documentElement.getBoundingClientRect().height);
         fixed_wrapper.style.height = `${window.innerHeight}px`
-    }, 5000);
+    }, 50);
 
     // [("resize", "scroll", "touchstart", "touchmove")].forEach(function (e) {
     //     window.addEventListener(e, () => {
