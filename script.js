@@ -1,4 +1,16 @@
 window.onload = () => {
+    let header = document.getElementsByClassName("header")[0];
+    let top_button = document.getElementsByClassName("top")[0];
+    let down_button = document.getElementsByClassName("down")[0];
+    const counter1 = document.getElementsByClassName("counter")[0];
+    const counter2 = document.getElementsByClassName("counter")[1];
+    const images = document.querySelectorAll("div.images_wrapper > img");
+    let images_counter = images.length;
+    const about_btn = document.querySelector("#about-btn");
+    const contact_btn = document.querySelector("#contact-btn");
+    const hidden_wrapper = document.querySelectorAll(".hidden-wrapper")[0];
+    let fixed_wrapper = document.querySelectorAll('.fixed-wrapper')[0];
+
     x = {
         aInternal: 10,
         aListener: function (val) {},
@@ -24,11 +36,20 @@ window.onload = () => {
     let vh = window.innerHeight;
 
     x.registerListener(function (val) {
-        counter1.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`;
-        counter2.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`;
+        counter1.innerText = val;
+        counter2.innerText = val;
+        fixed_wrapper.style.height = val
+        console.log('triger');
+        // alert("Someone changed the value of x.a to " + val);
     });
 
-    x = window.innerHeight;
+    x.a = 0;
+    x.a = vh;
+
+    setInterval(function () {
+        x.a = 10;
+        console.log(x);
+    }, 2000);
 
     [("resize", "scroll", "touchstart", "touchmove")].forEach(function (e) {
         window.addEventListener(e, () => {
@@ -38,7 +59,7 @@ window.onload = () => {
             fix.forEach((el) => {
                 el.style.height = `${vh}px`;
                 console.log(vh, el.style.height);
-                x = `${vh}px`
+                x.a = `${vh}px`;
                 // counter1.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`;
                 // counter2.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`;
             });
@@ -95,17 +116,6 @@ window.onload = () => {
     //         back_btn = document.getElementsByClassName('back-btn')[0],
     //         left_btn = $('.left-btn')[0],
     //         right_btn = $('.right-btn')[0];
-
-    let header = document.getElementsByClassName("header")[0];
-    let top_button = document.getElementsByClassName("top")[0];
-    let down_button = document.getElementsByClassName("down")[0];
-    const counter1 = document.getElementsByClassName("counter")[0];
-    const counter2 = document.getElementsByClassName("counter")[1];
-    const images = document.querySelectorAll("div.images_wrapper > img");
-    let images_counter = images.length;
-    const about_btn = document.querySelector("#about-btn");
-    const contact_btn = document.querySelector("#contact-btn");
-    const hidden_wrapper = document.querySelectorAll(".hidden-wrapper")[0];
 
     top_button.addEventListener("click", () => {
         window.scrollTo({
