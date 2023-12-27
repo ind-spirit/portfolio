@@ -49,36 +49,35 @@ window.onload = () => {
     x.a = 0;
     x.a = vh;
     // let i = 0
-    // setInterval(function () {
-    //     // x.a = `${window.innerHeight}px`;
-    //     // x.a = `${document.documentElement.clientHeight}px`
-    //     // console.log(x.a);
-    //     i++
-    //     counter1.innerText = window.visualViewport.height
-    //     counter2.innerText = window.visualViewport.height
-    //     console.log(window.visualViewport.height);
-    //     fixed_wrapper.style.height = `${window.innerHeight}px`
-    // }, 500);
+    setInterval(function () {
+        // x.a = `${window.innerHeight}px`;
+        // x.a = `${document.documentElement.clientHeight}px`
+        // console.log(x.a);
+        counter1.innerText = 2
+        counter2.innerText = 2
+        // console.log(window.visualViewport.height);
+        fixed_wrapper.style.height = `${window.visualViewport.height}px`
+    }, 50);
 
-    [("resize", "scroll", "touchstart", "touchmove")].forEach(function (e) {
-        window.addEventListener(e, () => {
-            fixed_wrapper.style.height = `${window.visualViewport.height}px`
-            counter1.innerText = 1;
-            // x.a = `${window.innerHeight}px`
-            // x.a = `${document.documentElement.clientHeight}px`
-            // let vh = window.innerHeight;
-            // document.documentElement.style.setProperty("--vh", `${vh}px`);
-            // let fix = document.querySelectorAll(".fix")[0];
-            // fix
-            // fix.forEach((el) => {
-            //     el.style.height = `${window.innerHeight}px`;
-            //     console.log(vh, el.style.height);
-            //     x.a = `${window.innerHeight}px`;
-            //     // counter1.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`;
-            //     // counter2.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`;
-            // });
-        });
-    });
+    // [("resize", "scroll", "touchstart", "touchmove")].forEach(function (e) {
+    //     window.addEventListener(e, () => {
+    //         fixed_wrapper.style.height = `${window.visualViewport.height}px`
+    //         counter1.innerText = 2;
+    //         // x.a = `${window.innerHeight}px`
+    //         // x.a = `${document.documentElement.clientHeight}px`
+    //         // let vh = window.innerHeight;
+    //         // document.documentElement.style.setProperty("--vh", `${vh}px`);
+    //         // let fix = document.querySelectorAll(".fix")[0];
+    //         // fix
+    //         // fix.forEach((el) => {
+    //         //     el.style.height = `${window.innerHeight}px`;
+    //         //     console.log(vh, el.style.height);
+    //         //     x.a = `${window.innerHeight}px`;
+    //         //     // counter1.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`;
+    //         //     // counter2.innerText = `${vh}  ${el.style.height} ${window.innerHeight}`;
+    //         // });
+    //     });
+    // });
 
     // window.addEventListener("resize", () => {
     //     // We execute the same script as before
