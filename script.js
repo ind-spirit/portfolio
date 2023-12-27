@@ -51,9 +51,9 @@ window.onload = () => {
         // x.a = `${window.innerHeight}px`;
         // x.a = `${document.documentElement.clientHeight}px`
         // console.log(x.a);
-        counter1.innerText = val;
-        counter2.innerText = val;
-        fixed_wrapper.style.height = `${val}px`
+        counter1.innerText = window.innerHeight;
+        counter2.innerText = window.innerHeight;
+        fixed_wrapper.style.height = `${window.innerHeight}px`
     }, 10);
 
     // [("resize", "scroll", "touchstart", "touchmove")].forEach(function (e) {
