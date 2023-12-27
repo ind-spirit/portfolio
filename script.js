@@ -38,8 +38,9 @@ window.onload = () => {
     x.registerListener(function (val) {
         counter1.innerText = val;
         counter2.innerText = val;
-        fixed_wrapper.style.height = val
-        console.log('triger');
+        fixed_wrapper.style.height = `${val}px`
+        console.log(fixed_wrapper.style.height);
+        console.log('triger', val);
         // alert("Someone changed the value of x.a to " + val);
     });
 
