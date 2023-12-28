@@ -106,9 +106,6 @@ body {
 .name.fixed {
   font-size: 17.6px;
   margin-top: 10vh;
-  transition-property: margin-top;
-  transition-timing-function: linear;
-  transition-duration: 10ms;
 }
 
 .counter_wrapper.fixed {
