@@ -46,25 +46,7 @@ window.onload = () => {
     //     // alert("Someone changed the value of x.a to " + val);
     // });
 
-    setInterval(function () {
-        // counter1.innerText = `${window.screen.availHeight * 0.1} - (${
-        //     window.screen.availHeight
-        // } - ${window.visualViewport.height})`;
-        // counter2.innerText = `${window.screen.availHeight * 0.1} - (${
-        //     window.screen.availHeight
-        // } - ${window.visualViewport.height})`;
-        // fixed_wrapper.style.height = `${window.visualViewport.height}px`;
-        // console.log(
-        //     `${window.screen.availHeight * 0.1} + (${
-        //         window.screen.availHeight
-        //     } - ${window.visualViewport.height})`
-        // );
-        document.querySelectorAll(".name.fixed")[0].style.marginTop = `${
-            window.screen.availHeight * 0.3 -
-            (window.screen.availHeight - window.visualViewport.height)
-        }px`;
-        fixed_wrapper.style.height = `${window.visualViewport.height}px`
-    });
+
 
     // setInterval(function () {
     //     // x.a = `${window.innerHeight}px`;
@@ -110,6 +92,26 @@ window.onload = () => {
             .classList.remove("hidden");
         about_article = document.querySelectorAll(".about_article")[0];
         contacts_article = document.querySelectorAll(".contacts_article")[0];
+
+        setInterval(function () {
+            // counter1.innerText = `${window.screen.availHeight * 0.1} - (${
+            //     window.screen.availHeight
+            // } - ${window.visualViewport.height})`;
+            // counter2.innerText = `${window.screen.availHeight * 0.1} - (${
+            //     window.screen.availHeight
+            // } - ${window.visualViewport.height})`;
+            // fixed_wrapper.style.height = `${window.visualViewport.height}px`;
+            // console.log(
+            //     `${window.screen.availHeight * 0.1} + (${
+            //         window.screen.availHeight
+            //     } - ${window.visualViewport.height})`
+            // );
+            document.querySelectorAll(".name.fixed")[0].style.marginTop = `${
+                window.screen.availHeight * 0.2 -
+                (window.screen.availHeight - window.visualViewport.height)
+            }px`;
+            fixed_wrapper.style.height = `${window.visualViewport.height}px`
+        });
     }
 
 
