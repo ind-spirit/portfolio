@@ -13,52 +13,52 @@ window.onload = () => {
     const hidden_wrapper = document.querySelectorAll(".hidden-wrapper")[0];
     let fixed_wrapper = document.querySelectorAll(".fixed-wrapper")[0];
 
-    x = {
-        aInternal: 10,
-        aListener: function (val) {},
-        set a(val) {
-            this.aInternal = val;
-            this.aListener(val);
-        },
-        get a() {
-            return this.aInternal;
-        },
-        registerListener: function (listener) {
-            this.aListener = listener;
-        },
-    };
+    // x = {
+    //     aInternal: 10,
+    //     aListener: function (val) {},
+    //     set a(val) {
+    //         this.aInternal = val;
+    //         this.aListener(val);
+    //     },
+    //     get a() {
+    //         return this.aInternal;
+    //     },
+    //     registerListener: function (listener) {
+    //         this.aListener = listener;
+    //     },
+    // };
 
-    console.log(
-        document.body.style.width,
-        document.documentElement.clientWidth
-    );
-    document.body.style.width = `${document.documentElement.clientWidth}px`;
-    console.log(document.body.style.width, window.innerWidth);
+    // console.log(
+    //     document.body.style.width,
+    //     document.documentElement.clientWidth
+    // );
+    // document.body.style.width = `${document.documentElement.clientWidth}px`;
+    // console.log(document.body.style.width, window.innerWidth);
 
-    let vh = window.innerHeight;
+    // let vh = window.innerHeight;
 
-    x.registerListener(function (val) {
-        counter1.innerText = val;
-        counter2.innerText = val;
-        fixed_wrapper.style.height = `${val}px`;
-        console.log(fixed_wrapper.style.height);
-        console.log("triger", val);
-        // alert("Someone changed the value of x.a to " + val);
-    });
+    // x.registerListener(function (val) {
+    //     counter1.innerText = val;
+    //     counter2.innerText = val;
+    //     fixed_wrapper.style.height = `${val}px`;
+    //     console.log(fixed_wrapper.style.height);
+    //     console.log("triger", val);
+    //     // alert("Someone changed the value of x.a to " + val);
+    // });
 
     setInterval(function () {
-        counter1.innerText = `${window.screen.availHeight * 0.1} - (${
-            window.screen.availHeight
-        } - ${window.visualViewport.height})`;
-        counter2.innerText = `${window.screen.availHeight * 0.1} - (${
-            window.screen.availHeight
-        } - ${window.visualViewport.height})`;
-        fixed_wrapper.style.height = `${window.visualViewport.height}px`;
-        console.log(
-            `${window.screen.availHeight * 0.1} + (${
-                window.screen.availHeight
-            } - ${window.visualViewport.height})`
-        );
+        // counter1.innerText = `${window.screen.availHeight * 0.1} - (${
+        //     window.screen.availHeight
+        // } - ${window.visualViewport.height})`;
+        // counter2.innerText = `${window.screen.availHeight * 0.1} - (${
+        //     window.screen.availHeight
+        // } - ${window.visualViewport.height})`;
+        // fixed_wrapper.style.height = `${window.visualViewport.height}px`;
+        // console.log(
+        //     `${window.screen.availHeight * 0.1} + (${
+        //         window.screen.availHeight
+        //     } - ${window.visualViewport.height})`
+        // );
         document.querySelectorAll(".name.fixed")[0].style.marginTop = `${
             window.screen.availHeight * 0.3 -
             (window.screen.availHeight - window.visualViewport.height)
@@ -182,11 +182,11 @@ window.onload = () => {
         el.setAttribute("data-count", `${index + 1}`);
     });
     let data_count = document.querySelectorAll("[data-count]");
-    // window.onscroll = () => {
-    //     let img = getMostVisibleElement(data_count);
-    //     counter1.innerText = `${img.dataset.count}/${images_counter}`;
-    //     counter2.innerText = `${img.dataset.count}/${images_counter}`;
-    // };
+    window.onscroll = () => {
+        let img = getMostVisibleElement(data_count);
+        counter1.innerText = `${img.dataset.count}/${images_counter}`;
+        counter2.innerText = `${img.dataset.count}/${images_counter}`;
+    };
     function getMostVisibleElement(els) {
         var viewportHeight = window.innerHeight;
 
