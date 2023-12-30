@@ -13,57 +13,40 @@ window.onload = () => {
     const hidden_wrapper = document.querySelectorAll(".hidden-wrapper")[0];
     let fixed_wrapper = document.querySelectorAll(".fixed-wrapper")[0];
 
-    x = {
-        aInternal: 10,
-        aListener: function (val) {},
-        set a(val) {
-            this.aInternal = val;
-            this.aListener(val);
-        },
-        get a() {
-            return this.aInternal;
-        },
-        registerListener: function (listener) {
-            this.aListener = listener;
-        },
-    };
+    // x = {
+    //     aInternal: 10,
+    //     aListener: function (val) {},
+    //     set a(val) {
+    //         this.aInternal = val;
+    //         this.aListener(val);
+    //     },
+    //     get a() {
+    //         return this.aInternal;
+    //     },
+    //     registerListener: function (listener) {
+    //         this.aListener = listener;
+    //     },
+    // };
 
-    console.log(
-        document.body.style.width,
-        document.documentElement.clientWidth
-    );
-    document.body.style.width = `${document.documentElement.clientWidth}px`;
-    console.log(document.body.style.width, window.innerWidth);
+    // console.log(
+    //     document.body.style.width,
+    //     document.documentElement.clientWidth
+    // );
+    // document.body.style.width = `${document.documentElement.clientWidth}px`;
+    // console.log(document.body.style.width, window.innerWidth);
 
-    let vh = window.innerHeight;
+    // let vh = window.innerHeight;
 
-    x.registerListener(function (val) {
-        counter1.innerText = val;
-        counter2.innerText = val;
-        fixed_wrapper.style.height = `${val}px`;
-        console.log(fixed_wrapper.style.height);
-        console.log("triger", val);
-        // alert("Someone changed the value of x.a to " + val);
-    });
+    // x.registerListener(function (val) {
+    //     counter1.innerText = val;
+    //     counter2.innerText = val;
+    //     fixed_wrapper.style.height = `${val}px`;
+    //     console.log(fixed_wrapper.style.height);
+    //     console.log("triger", val);
+    //     // alert("Someone changed the value of x.a to " + val);
+    // });
 
-    setInterval(function () {
-        counter1.innerText = `${window.screen.availHeight * 0.1} - (${
-            window.screen.availHeight
-        } - ${window.visualViewport.height})`;
-        counter2.innerText = `${window.screen.availHeight * 0.1} - (${
-            window.screen.availHeight
-        } - ${window.visualViewport.height})`;
-        fixed_wrapper.style.height = `${window.visualViewport.height}px`;
-        console.log(
-            `${window.screen.availHeight * 0.1} + (${
-                window.screen.availHeight
-            } - ${window.visualViewport.height})`
-        );
-        document.querySelectorAll(".name.fixed")[0].style.marginTop = `${
-            window.screen.availHeight * 0.1 +
-            (window.screen.availHeight - window.visualViewport.height)
-        }px`;
-    }, 500);
+
 
     // setInterval(function () {
     //     // x.a = `${window.innerHeight}px`;
@@ -72,11 +55,6 @@ window.onload = () => {
     //     counter1.innerText = 5
     //     counter2.innerText = 5
     //     // console.log(window.visualViewport.height);
-    //     fixed_wrapper.style.height = `${window.visualViewport.height}px`
-    // }, 0);
-    // setTimeout(function() {
-    //     counter1.innerText = 6
-    //     counter2.innerText = 6
     //     fixed_wrapper.style.height = `${window.visualViewport.height}px`
     // }, 0);
     // [("resize", "scroll", "touchstart", "touchmove")].forEach(function (e) {
@@ -99,16 +77,7 @@ window.onload = () => {
     //     });
     // });
 
-    // window.addEventListener("resize", () => {
-    //     // We execute the same script as before
-    //     let vh = document.documentElement.clientHeight;
-    //     // document.documentElement.style.setProperty("--vh", `${vh}px`);
-    //     let fix = document.querySelectorAll(".fix");
-    //     fix.forEach((el) => {
-    //         el.style.height = `${vh}px`;
-    //         console.log(vh, el.style.height);
-    //     });
-    // });
+
 
     let about_article = document.querySelectorAll(".about_article")[1];
     let contacts_article = document.querySelectorAll(".contacts_article")[1];
@@ -123,32 +92,28 @@ window.onload = () => {
             .classList.remove("hidden");
         about_article = document.querySelectorAll(".about_article")[0];
         contacts_article = document.querySelectorAll(".contacts_article")[0];
-    }
-    // const ifMobile = window.matchMedia('screen and (max-aspect-ratio: 8/11)').matches;
-    // if (ifMobile) {
-    //     document.body.style.height = `${window.innerHeight}px`;
-    // }
 
-    // let total = 38,
-    //         gallery = document.getElementsByClassName('gallery')[0],
-    //         collection,
-    //         arr,
-    //         back_wrapper = $('.back-wrapper')[0],
-    //         fs_image = document.querySelectorAll('img.fs-image')[0],
-    //         root_styles = getComputedStyle(document.body),
-    //         height = parseInt(root_styles.getPropertyValue('--height')),
-    //         ratio = parseFloat(root_styles.getPropertyValue('--ratio')),
-    //         fs_size = parseFloat(root_styles.getPropertyValue('--fullscreen-size')),
-    //         grid_size = parseInt(root_styles.getPropertyValue('--grid-size')),
-    //         width = height * ratio,
-    //         path = "https://ik.imagekit.io/indspirit/",
-    //         jpg = `.jpg?tr=h-${grid_size},w-${grid_size * ratio},fo-auto,f-auto`,
-    //         preview = `.jpg?tr=h-5:h-${height},w-${width},f-auto`,
-    //         fs_src = `.jpg?tr=w-${fs_size},h-${fs_size},c-at_max,f-auto`,
-    //         fs_preview = `.jpg?tr=h-10,c-at_least:w-${fs_size},h-${fs_size},c-at_least,f-auto`,
-    //         back_btn = document.getElementsByClassName('back-btn')[0],
-    //         left_btn = $('.left-btn')[0],
-    //         right_btn = $('.right-btn')[0];
+        setInterval(function () {
+            // counter1.innerText = `${window.screen.availHeight * 0.1} - (${
+            //     window.screen.availHeight
+            // } - ${window.visualViewport.height})`;
+            // counter2.innerText = `${window.screen.availHeight * 0.1} - (${
+            //     window.screen.availHeight
+            // } - ${window.visualViewport.height})`;
+            // fixed_wrapper.style.height = `${window.visualViewport.height}px`;
+            // console.log(
+            //     `${window.screen.availHeight * 0.1} + (${
+            //         window.screen.availHeight
+            //     } - ${window.visualViewport.height})`
+            // );
+            document.querySelectorAll(".name.fixed")[0].style.marginTop = `${
+                window.screen.availHeight * 0.2 -
+                (window.screen.availHeight - window.visualViewport.height)
+            }px`;
+            fixed_wrapper.style.height = `${window.visualViewport.height}px`
+        });
+    }
+
 
     top_button.addEventListener("click", () => {
         window.scrollTo({
@@ -182,11 +147,11 @@ window.onload = () => {
         el.setAttribute("data-count", `${index + 1}`);
     });
     let data_count = document.querySelectorAll("[data-count]");
-    // window.onscroll = () => {
-    //     let img = getMostVisibleElement(data_count);
-    //     counter1.innerText = `${img.dataset.count}/${images_counter}`;
-    //     counter2.innerText = `${img.dataset.count}/${images_counter}`;
-    // };
+    window.onscroll = () => {
+        let img = getMostVisibleElement(data_count);
+        counter1.innerText = `${img.dataset.count}/${images_counter}`;
+        counter2.innerText = `${img.dataset.count}/${images_counter}`;
+    };
     function getMostVisibleElement(els) {
         var viewportHeight = window.innerHeight;
 

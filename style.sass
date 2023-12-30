@@ -1,7 +1,6 @@
 $fs: 16px
 $ori: 1vh
 
-
 html
     height: fill-available
     height: -webkit-fill-available
@@ -9,6 +8,14 @@ html
 .underline
     text-decoration: underline
     text-underline-offset: 0.22 * $fs
+
+.noselect
+    -webkit-touch-callout: none
+    -webkit-user-select: none
+    -khtml-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
 
 a
     color: inherit
@@ -34,7 +41,6 @@ body
     height: 0px !important
     width: 0px !important
 
-
 .wrappers
     display: flex
     flex-direction: column
@@ -48,17 +54,14 @@ body
     z-index: 2
     background-color: #F4F4F4
     font-size: 0.9 * $fs
-    
+
 .header-wrapper
     padding: 20vh 10% 0 10%
     display: flex
     gap: 10%
     flex-direction: row
     width: 80%
-    
-    
-    
-    
+
 .visible-wrapper
     width: 45%
     justify-content: flex-end
@@ -74,7 +77,6 @@ body
 
 .counter_wrapper
     line-height: 1.15 * $fs
-
 
 .contacts_article, .about_article
     display: flex
@@ -95,7 +97,7 @@ body
     // top: 25vh
     left: 10vw
     // margin: 0
-    z-index: 5
+    z-index: 1
     color: #F4F4F4
     font-size: 0.9 * $fs
     width: fit-content
@@ -107,7 +109,6 @@ body
     font-size: 1.1 * $fs
     margin-top: 10vh
 
-
 .counter_wrapper.fixed
     padding-bottom: 10vh
 
@@ -115,7 +116,6 @@ body
     // margin-left: 9vw
     position: relative
     width: fit-content
-
 
 #about-btn, #contact-btn
     cursor: pointer
@@ -127,14 +127,11 @@ body
 
 .scroll:hover
 
-
 #about-btn
     margin-bottom: 2 * $ori
 
 #contact-btn
     margin-bottom: 4 * $fs
-
-
 
 .main
     display: flex
@@ -142,7 +139,6 @@ body
     background-color: black
     color: #F4F4F4
     width: 100%
-
 
 .images_wrapper
     width: 54%
@@ -152,18 +148,10 @@ body
     display: flex
     flex-direction: column
     gap: 35vh
-    
-
-
 
 img
     width: 100%
     z-index: 3
-
-
-
-
-
 
 @media screen and (max-width: 900px)
     .images_wrapper
@@ -197,7 +185,7 @@ img
 
     .mobile_article-wrapper > .about_article, .mobile_articles-wrapper > .contacts_article
         // padding: 10% 0
-    
+
     .fixed-wrapper
         padding: 0
         height: 100vh
