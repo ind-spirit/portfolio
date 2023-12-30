@@ -1,9 +1,12 @@
-$fs: 16px
+$fs: 1vmax
 $ori: 1vh
 
 html
     height: fill-available
     height: -webkit-fill-available
+
+.btn
+    width: fit-content
 
 .underline
     text-decoration: underline
@@ -40,6 +43,7 @@ body
     visibility: hidden
     height: 0px !important
     width: 0px !important
+    display: none
 
 .wrappers
     display: flex
@@ -76,7 +80,7 @@ body
     text-transform: uppercase
 
 .counter_wrapper
-    line-height: 1.15 * $fs
+    // line-height: 1.15 * $fs
 
 .contacts_article, .about_article
     display: flex
@@ -93,7 +97,7 @@ body
 
 .fixed-wrapper
     position: fixed
-    height: 100dvh
+    height: 84dvh
     // top: 25vh
     left: 10vw
     // margin: 0
@@ -107,10 +111,9 @@ body
 
 .name.fixed
     font-size: 1.1 * $fs
-    margin-top: 10vh
+    margin-top: 20vh
 
 .counter_wrapper.fixed
-    padding-bottom: 10vh
 
 .about, .contact, .counter_wrapper
     // margin-left: 9vw
@@ -124,8 +127,6 @@ body
     text-decoration: underline
     text-underline-offset: 0.22 * $fs
     cursor: pointer
-
-.scroll:hover
 
 #about-btn
     margin-bottom: 2 * $ori
@@ -160,13 +161,19 @@ img
         padding: 20vh 2vw 15vh 2vw
         gap: 20vh
 
-    .wrappers
-        height: 60vh
+    // .wrappers
+    //     height: 60vh
+
+    .counter_wrapper.fixed
+        margin-bottom: 10dvh
+
+    .name.fixed
+        margin-top: 10dvh
 
     .header-wrapper
         padding: 10vh 2vw
-        height: fit-content
-        width: 96vw
+        height: 80%
+        width: 95vw
 
     .hidden-wrapper
         width: 0
@@ -179,7 +186,8 @@ img
         width: 100%
 
     .mobile_article-wrapper
-        padding: 20% 0
+        // padding: 20% 0
+        margin: auto 0
         width: 90vw
         // overflow: scroll
 
@@ -193,4 +201,4 @@ img
 
     .visible-wrapper
         width: 100%
-        height: 80vh
+        height: 100%

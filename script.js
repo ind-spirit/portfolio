@@ -81,38 +81,44 @@ window.onload = () => {
 
     let about_article = document.querySelectorAll(".about_article")[1];
     let contacts_article = document.querySelectorAll(".contacts_article")[1];
-    const ifMobile = window.matchMedia(
-        "screen and (max-aspect-ratio: 8/11)"
-    ).matches;
-    if (ifMobile) {
-        document.querySelectorAll(".hidden-wrapper")[0].remove();
-        // document.body.style.height = `${window.innerHeight}px`;
-        document
-            .querySelectorAll(".mobile_article-wrapper")[0]
-            .classList.remove("hidden");
-        about_article = document.querySelectorAll(".about_article")[0];
-        contacts_article = document.querySelectorAll(".contacts_article")[0];
+    window.onresize = mobile()
 
-        setInterval(function () {
-            // counter1.innerText = `${window.screen.availHeight * 0.1} - (${
-            //     window.screen.availHeight
-            // } - ${window.visualViewport.height})`;
-            // counter2.innerText = `${window.screen.availHeight * 0.1} - (${
-            //     window.screen.availHeight
-            // } - ${window.visualViewport.height})`;
-            // fixed_wrapper.style.height = `${window.visualViewport.height}px`;
-            // console.log(
-            //     `${window.screen.availHeight * 0.1} + (${
-            //         window.screen.availHeight
-            //     } - ${window.visualViewport.height})`
-            // );
-            document.querySelectorAll(".name.fixed")[0].style.marginTop = `${
-                window.screen.availHeight * 0.2 -
-                (window.screen.availHeight - window.visualViewport.height)
-            }px`;
-            fixed_wrapper.style.height = `${window.visualViewport.height}px`
-        });
+    function mobile() {
+        const ifMobile = window.matchMedia(
+            // "screen and (max-aspect-ratio: 8/11)"
+            "screen and (max-width: 900px)"
+        ).matches;
+        if (ifMobile) {
+            document.querySelectorAll(".hidden-wrapper")[0].remove();
+            // document.body.style.height = `${window.innerHeight}px`;
+            document
+                .querySelectorAll(".mobile_article-wrapper")[0]
+                .classList.remove("hidden");
+            about_article = document.querySelectorAll(".about_article")[0];
+            contacts_article = document.querySelectorAll(".contacts_article")[0];
+    
+            setInterval(function () {
+                // counter1.innerText = `${window.screen.availHeight * 0.1} - (${
+                //     window.screen.availHeight
+                // } - ${window.visualViewport.height})`;
+                // counter2.innerText = `${window.screen.availHeight * 0.1} - (${
+                //     window.screen.availHeight
+                // } - ${window.visualViewport.height})`;
+                // fixed_wrapper.style.height = `${window.visualViewport.height}px`;
+                // console.log(
+                //     `${window.screen.availHeight * 0.1} + (${
+                //         window.screen.availHeight
+                //     } - ${window.visualViewport.height})`
+                // );
+                // document.querySelectorAll(".name.fixed")[0].style.marginTop = `${
+                //     window.screen.availHeight * 0.2 -
+                //     (window.screen.availHeight - window.visualViewport.height)
+                // }px`;
+                fixed_wrapper.style.height = `${window.visualViewport.height}px`
+            });
+        }
     }
+    
 
 
     top_button.addEventListener("click", () => {
@@ -130,6 +136,15 @@ window.onload = () => {
     });
 
     about_btn.addEventListener("click", () => {
+        if (!about_btn.classList.contains('underline')) {
+            document
+                .querySelectorAll(".mobile_article-wrapper")[0]
+                .classList.remove("hidden");
+        } else {
+            document
+                .querySelectorAll(".mobile_article-wrapper")[0]
+                .classList.add("hidden");
+        }
         contacts_article.classList.add("hidden");
         about_article.classList.toggle("hidden");
         contact_btn.classList.remove("underline");
@@ -137,6 +152,15 @@ window.onload = () => {
     });
 
     contact_btn.addEventListener("click", () => {
+        if (!contact_btn.classList.contains('underline') ){
+            document
+                .querySelectorAll(".mobile_article-wrapper")[0]
+                .classList.remove("hidden");
+        } else { 
+            document
+                .querySelectorAll(".mobile_article-wrapper")[0]
+                .classList.add("hidden");
+        }
         about_article.classList.add("hidden");
         contacts_article.classList.toggle("hidden");
         contact_btn.classList.toggle("underline");

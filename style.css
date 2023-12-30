@@ -3,9 +3,13 @@ html {
   height: -webkit-fill-available;
 }
 
+.btn {
+  width: fit-content;
+}
+
 .underline {
   text-decoration: underline;
-  text-underline-offset: 3.52px;
+  text-underline-offset: 0.22vmax;
 }
 
 .noselect {
@@ -40,6 +44,7 @@ body {
   visibility: hidden;
   height: 0px !important;
   width: 0px !important;
+  display: none;
 }
 
 .wrappers {
@@ -55,7 +60,7 @@ body {
   height: 100vh;
   z-index: 2;
   background-color: #F4F4F4;
-  font-size: 14.4px;
+  font-size: 0.9vmax;
 }
 
 .header-wrapper {
@@ -77,12 +82,8 @@ body {
 }
 
 .about_name, .contacts_name {
-  font-size: 17.6px;
+  font-size: 1.1vmax;
   text-transform: uppercase;
-}
-
-.counter_wrapper {
-  line-height: 18.4px;
 }
 
 .contacts_article, .about_article {
@@ -94,18 +95,18 @@ body {
 }
 
 .name {
-  font-size: 19.2px;
+  font-size: 1.2vmax;
   width: fit-content;
   margin-bottom: auto;
 }
 
 .fixed-wrapper {
   position: fixed;
-  height: 100dvh;
+  height: 84dvh;
   left: 10vw;
   z-index: 1;
   color: #F4F4F4;
-  font-size: 14.4px;
+  font-size: 0.9vmax;
   width: fit-content;
   display: flex;
   flex-direction: column;
@@ -113,12 +114,8 @@ body {
 }
 
 .name.fixed {
-  font-size: 17.6px;
-  margin-top: 10vh;
-}
-
-.counter_wrapper.fixed {
-  padding-bottom: 10vh;
+  font-size: 1.1vmax;
+  margin-top: 20vh;
 }
 
 .about, .contact, .counter_wrapper {
@@ -132,7 +129,7 @@ body {
 
 .scroll {
   text-decoration: underline;
-  text-underline-offset: 3.52px;
+  text-underline-offset: 0.22vmax;
   cursor: pointer;
 }
 
@@ -141,7 +138,7 @@ body {
 }
 
 #contact-btn {
-  margin-bottom: 64px;
+  margin-bottom: 4vmax;
 }
 
 .main {
@@ -174,14 +171,18 @@ img {
     gap: 20vh;
   }
 
-  .wrappers {
-    height: 60vh;
+  .counter_wrapper.fixed {
+    margin-bottom: 10dvh;
+  }
+
+  .name.fixed {
+    margin-top: 10dvh;
   }
 
   .header-wrapper {
     padding: 10vh 2vw;
-    height: fit-content;
-    width: 96vw;
+    height: 80%;
+    width: 95vw;
   }
 
   .hidden-wrapper {
@@ -197,7 +198,7 @@ img {
   }
 
   .mobile_article-wrapper {
-    padding: 20% 0;
+    margin: auto 0;
     width: 90vw;
   }
 
@@ -209,6 +210,6 @@ img {
 
   .visible-wrapper {
     width: 100%;
-    height: 80vh;
+    height: 100%;
   }
 }
