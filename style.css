@@ -106,7 +106,7 @@ body {
 
 .fixed-wrapper {
   position: fixed;
-  height: 84dvh;
+  height: 84vh;
   left: 10vw;
   z-index: 1;
   color: #F4F4F4;
@@ -176,11 +176,11 @@ img {
   }
 
   .counter_wrapper.fixed {
-    margin-bottom: 10dvh;
+    margin-bottom: 10vh;
   }
 
   .name.fixed {
-    margin-top: 10dvh;
+    margin-top: 10vh;
   }
 
   .header-wrapper {
