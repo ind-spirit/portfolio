@@ -81,7 +81,7 @@ window.onload = () => {
 
     let about_article = document.querySelectorAll(".about_article")[1];
     let contacts_article = document.querySelectorAll(".contacts_article")[1];
-    window.onresize = mobile()
+    // window.onresize = mobile()
 
     function mobile() {
         const ifMobile = window.matchMedia(

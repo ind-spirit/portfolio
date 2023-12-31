@@ -1,3 +1,7 @@
+:root {
+  --fs: 1vmax;
+}
+
 html {
   height: fill-available;
   height: -webkit-fill-available;
@@ -9,7 +13,7 @@ html {
 
 .underline {
   text-decoration: underline;
-  text-underline-offset: 0.22vmax;
+  text-underline-offset: calc( var(--fs) * 0.22);
 }
 
 .noselect {
@@ -60,7 +64,7 @@ body {
   height: 100vh;
   z-index: 2;
   background-color: #F4F4F4;
-  font-size: 0.9vmax;
+  font-size: calc( var(--fs) * 0.9);
 }
 
 .header-wrapper {
@@ -82,7 +86,7 @@ body {
 }
 
 .about_name, .contacts_name {
-  font-size: 1.1vmax;
+  font-size: calc( var(--fs) * 1.1);
   text-transform: uppercase;
 }
 
@@ -95,7 +99,7 @@ body {
 }
 
 .name {
-  font-size: 1.2vmax;
+  font-size: calc( var(--fs) * 1.2);
   width: fit-content;
   margin-bottom: auto;
 }
@@ -106,7 +110,7 @@ body {
   left: 10vw;
   z-index: 1;
   color: #F4F4F4;
-  font-size: 0.9vmax;
+  font-size: calc( var(--fs) * 0.9);
   width: fit-content;
   display: flex;
   flex-direction: column;
@@ -114,7 +118,7 @@ body {
 }
 
 .name.fixed {
-  font-size: 1.1vmax;
+  font-size: calc( var(--fs) * 1.1);
   margin-top: 20vh;
 }
 
@@ -133,12 +137,8 @@ body {
   cursor: pointer;
 }
 
-#about-btn {
-  margin-bottom: 2vh;
-}
-
 #contact-btn {
-  margin-bottom: 4vmax;
+  margin-bottom: calc( var(--fs) * 4);
 }
 
 .main {
@@ -164,6 +164,10 @@ img {
 }
 
 @media screen and (max-width: 900px) {
+  :root {
+    --fs: 2vmax;
+  }
+
   .images_wrapper {
     width: 88%;
     align-self: flex-start;

@@ -1,5 +1,8 @@
 $fs: 1vmax
-$ori: 1vh
+
+:root
+  --fs: 1vmax
+    
 
 html
     height: fill-available
@@ -8,9 +11,10 @@ html
 .btn
     width: fit-content
 
+
 .underline
     text-decoration: underline
-    text-underline-offset: 0.22 * $fs
+    text-underline-offset: calc( var(--fs) * 0.22)
 
 .noselect
     -webkit-touch-callout: none
@@ -57,7 +61,7 @@ body
     height: 100vh
     z-index: 2
     background-color: #F4F4F4
-    font-size: 0.9 * $fs
+    font-size: calc( var(--fs) * 0.9)
 
 .header-wrapper
     padding: 20vh 10% 0 10%
@@ -76,7 +80,7 @@ body
     flex-shrink: 0.1
 
 .about_name, .contacts_name
-    font-size: $fs * 1.1
+    font-size: calc( var(--fs) * 1.1)
     text-transform: uppercase
 
 .counter_wrapper
@@ -90,7 +94,7 @@ body
     text-transform: none
 
 .name
-    font-size: 1.2 * $fs
+    font-size: calc( var(--fs) * 1.2)
     width: fit-content
     margin-bottom: auto
     // font-family: 'Sohne Buch', Georgia, serif
@@ -103,14 +107,14 @@ body
     // margin: 0
     z-index: 1
     color: #F4F4F4
-    font-size: 0.9 * $fs
+    font-size: calc( var(--fs) * 0.9)
     width: fit-content
     display: flex
     flex-direction: column
     justify-content: space-between
 
 .name.fixed
-    font-size: 1.1 * $fs
+    font-size: calc( var(--fs) * 1.1)
     margin-top: 20vh
 
 .counter_wrapper.fixed
@@ -125,14 +129,14 @@ body
 
 .scroll
     text-decoration: underline
-    text-underline-offset: 0.22 * $fs
+    text-underline-offset: 0.22vmax
     cursor: pointer
 
 #about-btn
-    margin-bottom: 2 * $ori
+    // margin-bottom: 2 * $ori
 
 #contact-btn
-    margin-bottom: 4 * $fs
+    margin-bottom: calc( var(--fs) * 4)
 
 .main
     display: flex
@@ -155,7 +159,9 @@ img
     z-index: 3
 
 @media screen and (max-width: 900px)
-    $fs: 4vmax
+    :root 
+        --fs: 2vmax
+    
     .images_wrapper
         width: 88%
         align-self: flex-start
