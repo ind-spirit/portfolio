@@ -174,8 +174,8 @@ window.onload = () => {
     });
     let data_count = document.querySelectorAll("[data-count]");
     let img = getMostVisibleElement(data_count);
-    counter1.innerText = `${img.dataset.count}/${images_counter}`;
-    counter2.innerText = `${img.dataset.count}/${images_counter}`;
+    counter1.innerText += `/${images_counter}`;
+    counter2.innerText += `${images_counter}`;
     window.onscroll = () => {
         let img = getMostVisibleElement(data_count);
         counter1.innerText = `${img.dataset.count}/${images_counter}`;
