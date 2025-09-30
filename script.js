@@ -1,90 +1,159 @@
-window.addEventListener("DOMContentLoaded", async () => {
-    const wrapper = document.querySelector(".images_wrapper");
-    const folder = "images/";
-    const extension = ".jpg";
-    const maxTry = 500;
+document.addEventListener("DOMContentLoaded", () => {
+  // ========== НАСТРОЙКИ ==========
+  const folder = "images/";
+  const ext = ".jpg";
+  const maxTry = 500;
+  const batchSize = 12;                 // сколько картинок проверяем одновременно
+  const stopAfterConsecutiveMisses = 25; // ранняя остановка при длинной пустой зоне
 
-    // === 1. ДИНАМИЧЕСКАЯ ЗАГРУЗКА ИЗОБРАЖЕНИЙ ===
-    const imagePromises = [];
-    for (let i = 1; i <= maxTry; i++) {
-        const imgPath = `${folder}${i}${extension}`;
-        const img = new Image();
-        img.src = imgPath;
-        img.loading = "lazy";
+  // ========== DOM ==========
+  const gallery = document.querySelector(".images_wrapper");
+  if (!gallery) {
+    console.error("Не найден .images_wrapper в DOM — проверь HTML.");
+    return;
+  }
+  const counterEls = Array.from(document.getElementsByClassName("counter")); // 0 и 1
+  const topBtn = document.querySelector(".top");
+  const downBtn = document.querySelector(".down");
+  const aboutBtn = document.getElementById("about-btn");
+  const contactBtn = document.getElementById("contact-btn");
 
-        // Проверяем, загрузилось ли фото (если 404 — не добавляем)
-        const promise = new Promise((resolve) => {
-            img.onload = () => {
-                wrapper.appendChild(img);
-                resolve();
-            };
-            img.onerror = () => resolve(); // просто пропускаем
-        });
+  // ========== Состояние ==========
+  let totalImages = 0;
+  let scanningFinished = false;
 
-        imagePromises.push(promise);
+  // ========== Вспомогательные функции ==========
+  function appendLoadedImage(imgElem, fileIdx) {
+    imgElem.loading = "lazy";
+    imgElem.dataset.index = fileIdx;          // реальный номер файла (1,2,7...)
+    totalImages++;
+    imgElem.dataset.count = totalImages;      // порядковый номер в галерее
+    gallery.appendChild(imgElem);
+  }
+
+  function getMostVisibleElement(list) {
+    const viewportHeight = window.innerHeight;
+    let best = null;
+    let bestPx = -1;
+    list.forEach(el => {
+      const r = el.getBoundingClientRect();
+      const visiblePx = Math.max(0, Math.min(r.bottom, viewportHeight) - Math.max(r.top, 0));
+      if (visiblePx > bestPx) { bestPx = visiblePx; best = el; }
+    });
+    return best;
+  }
+
+  function showFinalCounterAndAnimate() {
+    // подставляем 0/NN и даём класс для анимации
+    const text = `0/${totalImages}`;
+    counterEls.forEach(span => {
+      if (!span) return;
+      span.textContent = text;
+      span.classList.add("counter-appear");
+    });
+    // подпишемся на скролл только когда есть галерея
+    window.addEventListener("scroll", onScrollUpdate, { passive: true });
+    window.addEventListener("resize", onScrollUpdate);
+    onScrollUpdate();
+  }
+
+  function onScrollUpdate() {
+    const imgs = Array.from(gallery.querySelectorAll("img"));
+    if (!imgs.length) return;
+    const most = getMostVisibleElement(imgs);
+    const curr = most ? most.dataset.count || 0 : 0;
+    counterEls.forEach(span => { if (span) span.textContent = `${curr}/${totalImages}`; });
+  }
+
+  // ========== ИНИЦИАЛИЗАЦИЯ UI (кнопки, about/contact) ==========
+  function initUI() {
+    // пока счетчик пуст (показываем его только когда закончилась проверка)
+    counterEls.forEach(span => { if (span) span.textContent = ""; span?.classList.remove("counter-appear"); });
+
+    topBtn?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    downBtn?.addEventListener("click", () => window.scrollTo({ top: window.innerHeight, behavior: "smooth" }));
+
+    // about/contact — адаптивно
+    let articleWrapper, aboutArticle, contactsArticle;
+    function layoutUpdate() {
+      if (window.matchMedia("(max-width:900px)").matches) {
+        articleWrapper = document.querySelector(".mobile_article-wrapper");
+        aboutArticle = document.querySelector(".about_article");
+        contactsArticle = document.querySelector(".contacts_article");
+      } else {
+        articleWrapper = document.querySelector(".hidden-wrapper");
+        aboutArticle = document.querySelectorAll(".about_article")[1];
+        contactsArticle = document.querySelectorAll(".contacts_article")[1];
+      }
+    }
+    layoutUpdate();
+    window.addEventListener("resize", layoutUpdate);
+
+    aboutBtn?.addEventListener("click", () => {
+      if (!articleWrapper) layoutUpdate();
+      const active = aboutBtn.classList.contains("underline");
+      articleWrapper?.classList.toggle("hidden", active);
+      contactsArticle?.classList.add("hidden");
+      aboutArticle?.classList.toggle("hidden");
+      aboutBtn.classList.toggle("underline");
+      contactBtn?.classList.remove("underline");
+    });
+
+    contactBtn?.addEventListener("click", () => {
+      if (!articleWrapper) layoutUpdate();
+      const active = contactBtn.classList.contains("underline");
+      articleWrapper?.classList.toggle("hidden", active);
+      aboutArticle?.classList.add("hidden");
+      contactsArticle?.classList.toggle("hidden");
+      contactBtn?.classList.toggle("underline");
+      aboutBtn?.classList.remove("underline");
+    });
+  }
+
+  initUI(); // UI работоспособен сразу
+
+  // ========== ЗАГРУЗКА КАРТИНОК ПАЧКАМИ (Image + onload/onerror) ==========
+  async function loadImagesBatched() {
+    let consecutiveMisses = 0;
+
+    for (let start = 1; start <= maxTry; start += batchSize) {
+      const end = Math.min(maxTry, start + batchSize - 1);
+      const promises = [];
+
+      for (let i = start; i <= end; i++) {
+        promises.push(new Promise(resolve => {
+          const img = new Image();
+          img.decoding = "async";
+          img.src = `${folder}${i}${ext}`;
+          img.onload = () => resolve({ idx: i, ok: true, img });
+          img.onerror = () => resolve({ idx: i, ok: false });
+        }));
+      }
+
+      const results = await Promise.all(promises);
+
+      for (const r of results) {
+        if (r.ok) {
+          appendLoadedImage(r.img, r.idx);
+          consecutiveMisses = 0;
+        } else {
+          consecutiveMisses++;
+        }
+      }
+
+      // ранний init — не нужен, потому что UI уже работает.
+      // Остановка по длинным пропускам:
+      if (consecutiveMisses >= stopAfterConsecutiveMisses) {
+        console.log(`stop scanning after ${consecutiveMisses} consecutive misses (around index ${start})`);
+        break;
+      }
     }
 
-    // Ждём, пока все попытки завершатся
-    await Promise.all(imagePromises);
+    scanningFinished = true;
+    console.log("scanning finished — totalImages =", totalImages);
+    showFinalCounterAndAnimate();
+  }
 
-    // === 2. ЗАПУСК ОСНОВНОЙ ЛОГИКИ ===
-    initGalleryLogic();
+  // старт загрузки (параллельно)
+  loadImagesBatched().catch(err => console.error("Error in loadImagesBatched:", err));
 });
-
-function initGalleryLogic() {
-    const topButton = document.querySelector(".top");
-    const downButton = document.querySelector(".down");
-    const counterSpans = document.querySelectorAll(".counter");
-    const images = document.querySelectorAll(".images_wrapper > img");
-    const total = images.length;
-
-    // === 3. АНИМАЦИЯ СЧЁТЧИКА ===
-    counterSpans.forEach((span) => {
-        span.textContent = `0/${total}`;
-        span.classList.add("counter-appear");
-    });
-
-    // === 4. СКРОЛЛ-КНОПКИ ===
-    topButton.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-
-    downButton.addEventListener("click", () => {
-        window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
-    });
-
-    // === 5. СЧЁТЧИК ВИДИМОГО ИЗОБРАЖЕНИЯ ===
-    images.forEach((img, i) => img.dataset.count = i + 1);
-
-    function getMostVisibleElement(els) {
-        let viewportHeight = window.innerHeight;
-        let maxVisible = 0;
-        let mostVisible = els[0];
-
-        els.forEach((el) => {
-            const rect = el.getBoundingClientRect();
-            const visible = Math.max(
-                0,
-                Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0)
-            );
-            if (visible > maxVisible) {
-                maxVisible = visible;
-                mostVisible = el;
-            }
-        });
-
-        return mostVisible;
-    }
-
-    function updateCounter() {
-        const visible = getMostVisibleElement(Array.from(images));
-        const current = visible ? visible.dataset.count : 0;
-        counterSpans.forEach((span) => {
-            span.textContent = `${current}/${total}`;
-        });
-    }
-
-    updateCounter();
-    window.addEventListener("scroll", updateCounter);
-    window.addEventListener("resize", updateCounter);
-}
