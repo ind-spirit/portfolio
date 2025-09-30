@@ -26,7 +26,7 @@ window.onload = () => {
         }
 
         // после того как все картинки добавлены — запускаем остальной код
-        initGalleryLogic();
+        myCode();
     })();
 
     function myCode() {
