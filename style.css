@@ -190,6 +190,13 @@ img {
   height: auto;
   display: block;
 }
+.counter {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+.counter.visible {
+    opacity: 1;
+}
 
 
 /* end of gpt part */
