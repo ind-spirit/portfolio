@@ -168,7 +168,9 @@ img {
   width: 100%;
   z-index: 3;
 }
-/* анимация появления счётчика */
+
+/* gpt part */
+
 .counter-appear {
   opacity: 0;
   transform: translateY(8px);
@@ -181,6 +183,18 @@ img {
     transform: translateY(0);
   }
 }
+
+/* На всякий случай */
+.lazy-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* end of gpt part */
+
+
 
 
 @media screen and (max-width: 900px) {
