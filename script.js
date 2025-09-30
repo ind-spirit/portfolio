@@ -1,11 +1,9 @@
 window.onload = () => {
+    // === ДИНАМИЧЕСКОЕ ДОБАВЛЕНИЕ ИЗОБРАЖЕНИЙ ===
     const wrapper = document.querySelector(".images_wrapper");
-    const folder = "images/";
-    const extension = ".jpg";
-    const maxTry = 40; // проверяем максимум 40
-
-    const counter1 = document.getElementsByClassName("counter")[0];
-    const counter2 = document.getElementsByClassName("counter")[1];
+    const folder = "images/"; // папка с фото
+    const extension = ".jpg"; // расширение
+    const maxTry = 40; // максимум проверяемых номеров
 
     async function imageExists(url) {
         try {
@@ -17,38 +15,45 @@ window.onload = () => {
     }
 
     (async () => {
-        let imagesLoaded = [];
-
+        let count = 0;
         for (let i = 1; i <= maxTry; i++) {
-            const path = `${folder}${i}${extension}`;
-            if (await imageExists(path)) {
+            const imgPath = `${folder}${i}${extension}`;
+            if (await imageExists(imgPath)) {
                 const img = document.createElement("img");
-                img.src = path;
+                img.dataset.count = count + 1; // для счётчика
+                img.src = imgPath;
                 img.loading = "lazy";
+                img.style.opacity = 0;
+                img.style.transition = "opacity 0.5s";
                 wrapper.appendChild(img);
-                imagesLoaded.push(img);
+                // плавное появление при загрузке изображения
+                img.onload = () => img.style.opacity = 1;
+                count++;
             }
         }
 
-        // после загрузки всех существующих картинок
-        initGallery(imagesLoaded);
+        // после того как все картинки добавлены — запускаем остальной код
+        initGalleryLogic(count);
     })();
 
-    function initGallery(images) {
-        const totalImages = images.length;
+    function initGalleryLogic(totalImages) {
+        const counter1 = document.getElementsByClassName("counter")[0];
+        const counter2 = document.getElementsByClassName("counter")[1];
+        const top_button = document.querySelector(".scroll.top");
+        const down_button = document.querySelector(".scroll.down");
 
-        // установка data-count и анимация счётчика
-        images.forEach((img, index) => img.setAttribute("data-count", index + 1));
-
+        // Изначальный счётчик 0/X с плавной анимацией
         [counter1, counter2].forEach(el => {
             el.innerText = `0/${totalImages}`;
             el.style.opacity = 0;
             el.style.transition = "opacity 0.5s";
-            requestAnimationFrame(() => el.style.opacity = 1);
+            setTimeout(() => el.style.opacity = 1, 50);
         });
 
+        const images = document.querySelectorAll("div.images_wrapper > img");
+
         function getMostVisibleElement(els) {
-            let viewportHeight = window.innerHeight;
+            const viewportHeight = window.innerHeight;
             let max = 0;
             let mostVisibleEl = null;
 
@@ -58,9 +63,11 @@ window.onload = () => {
                 let visiblePx = 0;
 
                 if (rect.top >= 0 && rect.bottom <= viewportHeight) {
-                    visiblePx = height;
-                } else if (rect.top < viewportHeight && rect.bottom > 0) {
-                    visiblePx = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
+                    visiblePx = height; // полностью виден
+                } else if (rect.top < viewportHeight && rect.bottom >= viewportHeight) {
+                    visiblePx = viewportHeight - rect.top;
+                } else if (rect.top < 0 && rect.bottom > 0) {
+                    visiblePx = rect.bottom;
                 }
 
                 if (visiblePx > max) {
@@ -72,25 +79,25 @@ window.onload = () => {
             return mostVisibleEl;
         }
 
-        window.addEventListener("scroll", () => {
-            let num = 0;
-            const firstImg = images[0];
-            if (firstImg) {
-                const rect = firstImg.getBoundingClientRect();
-                if (rect.top <= 0) {
-                    const img = getMostVisibleElement(images);
-                    if (img) num = Array.from(images).indexOf(img) + 1;
-                }
+        function updateCounter() {
+            const img = getMostVisibleElement(images);
+            if (!img) {
+                counter1.innerText = `0/${totalImages}`;
+                counter2.innerText = `0/${totalImages}`;
+            } else {
+                const index = parseInt(img.dataset.count);
+                counter1.innerText = `${index}/${totalImages}`;
+                counter2.innerText = `${index}/${totalImages}`;
             }
-            counter1.innerText = `${num}/${totalImages}`;
-            counter2.innerText = `${num}/${totalImages}`;
-        });
+        }
 
-        // кнопки скролла
-        const topBtn = document.querySelector(".scroll.top");
-        const downBtn = document.querySelector(".scroll.down");
+        window.addEventListener("scroll", updateCounter);
 
-        if (topBtn) topBtn.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
-        if (downBtn) downBtn.addEventListener("click", () => window.scrollTo({top:window.innerHeight, behavior:"smooth"}));
+        // Скролл вверх и вниз
+        top_button.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+        down_button.addEventListener("click", () => window.scrollTo({ top: window.innerHeight, behavior: "smooth" }));
+
+        // Изначальный апдейт
+        updateCounter();
     }
 };
