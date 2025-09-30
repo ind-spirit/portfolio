@@ -1,112 +1,100 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const folder = "images/";
-  const ext = ".jpg";
-  const maxTry = 500;
-  const gallery = document.querySelector(".images_wrapper");
-  const counterEls = document.querySelectorAll(".counter");
-  const topBtn = document.querySelector(".top");
-  const downBtn = document.querySelector(".down");
+window.onload = () => {
+    const wrapper = document.querySelector(".images_wrapper");
+    const folder = "images/"; // папка с фото
+    const ext = ".jpg";       // расширение
+    const maxTry = 40;        // проверяем до 40
 
-  let totalImages = 0;
-
-  // === 1. Загружаем список изображений (определяем, какие существуют) ===
-  async function getImageCount() {
-    let found = 0;
-    for (let i = 1; i <= maxTry; i++) {
-      try {
-        const res = await fetch(`${folder}${i}${ext}`, { method: "HEAD" });
-        if (res.ok) found++;
-        else break;
-      } catch {
-        break;
-      }
-    }
-    return found;
-  }
-
-  // === 2. Генерируем ленивые изображения ===
-  function createLazyImages(count) {
-    for (let i = 1; i <= count; i++) {
-      const img = document.createElement("img");
-      img.dataset.src = `${folder}${i}${ext}`;
-      img.loading = "lazy";
-      img.alt = `image ${i}`;
-      img.className = "lazy-img";
-      gallery.appendChild(img);
-    }
-  }
-
-  // === 3. Ленивая подгрузка через IntersectionObserver ===
-  function enableLazyLoad() {
-    const images = document.querySelectorAll(".lazy-img");
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src;
-          obs.unobserve(img);
+    // Проверка существования изображения
+    async function imageExists(url) {
+        try {
+            const res = await fetch(url, { method: "HEAD" });
+            return res.ok;
+        } catch {
+            return false;
         }
-      });
-    }, { rootMargin: "200px" });
-    images.forEach(img => observer.observe(img));
-  }
+    }
 
-  // === 4. Счётчик ===
-  function setInitialCounter() {
-    counterEls.forEach(span => {
-      span.textContent = `0/${totalImages}`;
-      span.classList.add("counter-appear");
-    });
-  }
+    // Считаем сколько изображений реально есть
+    async function getImageCount() {
+        let count = 0;
+        for (let i = 1; i <= maxTry; i++) {
+            if (await imageExists(`${folder}${i}${ext}`)) count++;
+        }
+        return count;
+    }
 
-  function updateCounter() {
-    const imgs = Array.from(gallery.querySelectorAll("img"));
-    if (!imgs.length) return;
+    // Генерация img с lazy-loading
+    async function loadImages() {
+        for (let i = 1; i <= maxTry; i++) {
+            const imgPath = `${folder}${i}${ext}`;
+            if (await imageExists(imgPath)) {
+                const img = document.createElement("img");
+                img.src = imgPath;
+                img.loading = "lazy"; // ленивый лоад
+                img.dataset.count = i;
+                wrapper.appendChild(img);
+            }
+        }
+    }
 
-    const mostVisible = getMostVisible(imgs);
-    const current = mostVisible ? mostVisible.dataset.index || 0 : 0;
+    (async () => {
+        const totalImages = await getImageCount();
+        await loadImages();
 
-    counterEls.forEach(span => {
-      span.textContent = `${current}/${totalImages}`;
-    });
-  }
+        // Запускаем логику галереи
+        initGallery(totalImages);
+    })();
 
-  function getMostVisible(images) {
-    let maxVisible = 0;
-    let best = null;
-    images.forEach(img => {
-      const rect = img.getBoundingClientRect();
-      const visible = Math.max(
-        0,
-        Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0)
-      );
-      if (visible > maxVisible) {
-        maxVisible = visible;
-        best = img;
-      }
-    });
-    return best;
-  }
+    function initGallery(totalImages) {
+        const counter1 = document.getElementsByClassName("counter")[0];
+        const counter2 = document.getElementsByClassName("counter")[1];
+        const images = document.querySelectorAll("div.images_wrapper > img");
 
-  // === 5. Навигация ===
-  topBtn?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-  downBtn?.addEventListener("click", () => window.scrollTo({ top: window.innerHeight, behavior: "smooth" }));
+        // Счётчик сначала 0/total
+        counter1.innerText = `0/${totalImages}`;
+        counter2.innerText = `0/${totalImages}`;
+        counter1.style.opacity = 0;
+        counter2.style.opacity = 0;
+        // Простая анимация появления
+        setTimeout(() => {
+            counter1.style.transition = "opacity 0.5s";
+            counter2.style.transition = "opacity 0.5s";
+            counter1.style.opacity = 1;
+            counter2.style.opacity = 1;
+        }, 100);
 
-  // === 6. Запуск ===
-  (async () => {
-    totalImages = await getImageCount();
-    createLazyImages(totalImages);
+        function getMostVisibleElement(els) {
+            const viewportHeight = window.innerHeight;
+            let max = 0;
+            let mostVisibleEl = null;
+            for (const el of els) {
+                const rect = el.getBoundingClientRect();
+                const height = rect.bottom - rect.top;
+                let visiblePx = 0;
+                if (rect.top >= 0 && rect.bottom <= viewportHeight) visiblePx = height;
+                else if (rect.top < viewportHeight && rect.bottom > viewportHeight) visiblePx = viewportHeight - rect.top;
+                else if (rect.top < 0 && rect.bottom > 0) visiblePx = rect.bottom;
+                if (visiblePx > max) {
+                    max = visiblePx;
+                    mostVisibleEl = el;
+                }
+            }
+            return mostVisibleEl;
+        }
 
-    // Пронумеровываем их, чтобы счётчик понимал порядок
-    document.querySelectorAll(".lazy-img").forEach((img, i) => {
-      img.dataset.index = i + 1;
-    });
+        window.addEventListener("scroll", () => {
+            const img = getMostVisibleElement(images);
+            if (img) {
+                const num = Array.from(images).indexOf(img) + 1;
+                counter1.innerText = `${num}/${totalImages}`;
+                counter2.innerText = `${num}/${totalImages}`;
+            }
+        });
 
-    setInitialCounter();
-    enableLazyLoad();
-
-    // Обновляем счётчик только при скролле (чтобы не прыгал в 1/NN на старте)
-    window.addEventListener("scroll", updateCounter);
-    window.addEventListener("resize", updateCounter);
-  })();
-});
+        // Кнопки вверх/вниз
+        const topBtn = document.querySelector(".scroll.top");
+        const downBtn = document.querySelector(".scroll.down");
+        topBtn?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+        downBtn?.addEventListener("click", () => window.scrollTo({ top: window.innerHeight, behavior: "smooth" }));
+    }
+};
