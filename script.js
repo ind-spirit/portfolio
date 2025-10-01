@@ -23,6 +23,7 @@ window.onload = () => {
 
     (async () => {
         let imagesLoaded = [];
+        let missCount = 0; // счётчик подряд пропущенных картинок
 
         for (let i = 1; i <= maxTry; i++) {
             const path = `${folder}${i}${extension}`;
@@ -32,6 +33,10 @@ window.onload = () => {
                 img.loading = "lazy";
                 wrapper.appendChild(img);
                 imagesLoaded.push(img);
+                missCount = 0; // сбрасываем, если нашли
+            } else {
+                missCount++;
+                if (missCount >= 2) break; // две подряд пропущены — выходим
             }
         }
 
