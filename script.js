@@ -2,10 +2,18 @@ window.onload = () => {
     const wrapper = document.querySelector(".images_wrapper");
     const folder = "images/";
     const extension = ".jpg";
-    const maxTry = 40; // проверяем максимум 40
+    const maxTry = 40;
 
     const counter1 = document.getElementsByClassName("counter")[0];
     const counter2 = document.getElementsByClassName("counter")[1];
+
+    // Появление счётчика сразу (0/0), не ждём HEAD-запросы
+    [counter1, counter2].forEach(el => {
+        el.innerText = `0/0`;
+        el.style.opacity = 0;
+        el.style.transition = "opacity 0.5s";
+        requestAnimationFrame(() => el.style.opacity = 1);
+    });
 
     async function imageExists(url) {
         try {
@@ -30,21 +38,18 @@ window.onload = () => {
             }
         }
 
-        // после загрузки всех существующих картинок
         initGallery(imagesLoaded);
     })();
 
     function initGallery(images) {
         const totalImages = images.length;
 
-        // установка data-count и анимация счётчика
+        // назначаем data-count
         images.forEach((img, index) => img.setAttribute("data-count", index + 1));
 
+        // обновляем общий счётчик
         [counter1, counter2].forEach(el => {
             el.innerText = `0/${totalImages}`;
-            el.style.opacity = 0;
-            el.style.transition = "opacity 0.5s";
-            requestAnimationFrame(() => el.style.opacity = 1);
         });
 
         function getMostVisibleElement(els) {
@@ -54,17 +59,16 @@ window.onload = () => {
 
             els.forEach(el => {
                 const rect = el.getBoundingClientRect();
-                const height = rect.bottom - rect.top;
-                let visiblePx = 0;
+                const height = rect.height;
 
-                if (rect.top >= 0 && rect.bottom <= viewportHeight) {
-                    visiblePx = height;
-                } else if (rect.top < viewportHeight && rect.bottom > 0) {
-                    visiblePx = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
-                }
+                // считаем видимой даже небольшую часть (20% высоты)
+                const visibleTop = Math.max(0, 0 - rect.top);
+                const visibleBottom = Math.max(0, viewportHeight - rect.top);
+                const visibleHeight = Math.min(visibleBottom, height) - visibleTop;
 
-                if (visiblePx > max) {
-                    max = visiblePx;
+                // если видно хотя бы 20% — засчитываем
+                if (visibleHeight / height > 0.2 && visibleHeight > max) {
+                    max = visibleHeight;
                     mostVisibleEl = el;
                 }
             });
@@ -72,15 +76,12 @@ window.onload = () => {
             return mostVisibleEl;
         }
 
+        // обновление счётчика на скролле
         window.addEventListener("scroll", () => {
             let num = 0;
-            const firstImg = images[0];
-            if (firstImg) {
-                const rect = firstImg.getBoundingClientRect();
-                if (rect.top <= 0) {
-                    const img = getMostVisibleElement(images);
-                    if (img) num = Array.from(images).indexOf(img) + 1;
-                }
+            const visibleImg = getMostVisibleElement(images);
+            if (visibleImg) {
+                num = Array.from(images).indexOf(visibleImg) + 1;
             }
             counter1.innerText = `${num}/${totalImages}`;
             counter2.innerText = `${num}/${totalImages}`;
@@ -90,7 +91,7 @@ window.onload = () => {
         const topBtn = document.querySelector(".scroll.top");
         const downBtn = document.querySelector(".scroll.down");
 
-        if (topBtn) topBtn.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
-        if (downBtn) downBtn.addEventListener("click", () => window.scrollTo({top:window.innerHeight, behavior:"smooth"}));
+        if (topBtn) topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+        if (downBtn) downBtn.addEventListener("click", () => window.scrollTo({ top: window.innerHeight, behavior: "smooth" }));
     }
 };
