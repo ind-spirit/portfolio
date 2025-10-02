@@ -1,7 +1,7 @@
 window.onload = () => {
     const wrapper = document.querySelector(".images_wrapper");
-    const folder = "images/";
-    const extension = ".jpg";
+    const folder = "imageswebp/";
+    const extension = ".webp";
     const maxTry = 40;
 
     const counter1 = document.getElementsByClassName("counter")[0];
