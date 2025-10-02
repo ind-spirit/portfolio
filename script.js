@@ -64,8 +64,8 @@ window.onload = () => {
     });
 
     // ---------- ДИНАМИЧЕСКАЯ ЗАГРУЗКА ФОТО ----------
-    const folder = "imageswebp/";
-    const extension = ".webp";
+    const folder = "images/";
+    const extension = ".jpg";
     const maxTry = 40;
     const imagesWrapper = document.querySelector(".images_wrapper");
 
