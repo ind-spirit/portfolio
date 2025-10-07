@@ -65,7 +65,7 @@ window.onload = () => {
 
     // ---------- ДИНАМИЧЕСКАЯ ЗАГРУЗКА ФОТО ----------
     const folder = "images/";
-    const extension = ".jpg";
+    const extension = ".webp";
     const maxTry = 40;
     const imagesWrapper = document.querySelector(".images_wrapper");
 
