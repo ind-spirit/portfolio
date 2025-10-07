@@ -1,39 +1,22 @@
 @echo off
-chcp 65001 >nul
 setlocal enabledelayedexpansion
 
-set "start=1"
-set "tmpdir=__tmp_%RANDOM%_%RANDOM%"
+set "folder=%cd%"
+set "thisfile=%~nx0"
+set /a counter=1
 
-mkdir "%tmpdir%" >nul 2>&1
-
-set /a filesFound=0
-
-for %%E in (jpg jpeg webp JPG JPEG WEBP) do (
-  for %%F in (*.%%E) do (
-    if exist "%%F" (
-      move /Y "%%F" "%tmpdir%\" >nul
-      if not errorlevel 1 set /a filesFound+=1
-    )
-  )
+:: Временные имена
+for /f "delims=" %%F in ('powershell -command "Get-ChildItem -File -Path '%folder%' | Where-Object { $_.Name -ne '%thisfile%' } | Get-Random -Count (Get-ChildItem -File -Path '%folder%' | Where-Object { $_.Name -ne '%thisfile%' } | Measure-Object).Count | ForEach-Object { $_.FullName }"') do (
+    set "ext=%%~xF"
+    ren "%%F" "temp_!counter!!ext!"
+    set /a counter+=1
 )
 
-if %filesFound%==0 (
-  rd "%tmpdir%" >nul 2>&1
-  exit /b 0
+set /a counter=1
+
+:: Финальные номера
+for %%F in (temp_*.*) do (
+    set "ext=%%~xF"
+    ren "%%F" "!counter!!ext!"
+    set /a counter+=1
 )
-
-pushd "%tmpdir%"
-set /a n=%start%
-
-for %%A in (*.*) do (
-  set "ext=%%~xA"
-  move /Y "%%~fA" "%~dp0!n!!ext!" >nul
-  set /a n+=1
-)
-
-popd
-rd "%tmpdir%" >nul 2>&1
-
-endlocal
-exit
